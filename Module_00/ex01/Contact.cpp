@@ -1,6 +1,7 @@
-#include <iostream>
-#include "Contact.class.hpp"
-
+#include "PhoneBook.hpp"
+#include "utils.hpp"
+#include "Contact.hpp"
+#include "colors.hpp"
 
 Contact::Contact(void) {
 

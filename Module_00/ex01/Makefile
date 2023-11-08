@@ -11,9 +11,10 @@ _ORANGE			=	\033[38;5;208m
 
 NAME 			=	phonebook
 
-SRC				=	PhoneBook.class.cpp \
-					Contact.class.cpp \
-					main.cpp
+SRC				=	main.cpp \
+					PhoneBook.cpp \
+					utils.cpp \
+					Contact.cpp \
 
 CC				=	g++
 CFLAGS			=	-Wall -Wextra -Werror -std=c++98

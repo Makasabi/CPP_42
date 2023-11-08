@@ -1,7 +1,8 @@
-#ifndef PHONEBOOK_CLASS_HPP
-# define PHONEBOOK_CLASS_HPP
+#pragma once
 
-# include "Contact.class.hpp"
+# include "Contact.hpp"
+# include "utils.hpp"
+# include "colors.hpp"
 
 class PhoneBook {
 
@@ -14,10 +15,10 @@ public:
 	void		searchContact();
 	void		exitPhoneBook();
 
+	void		displayContacts();
+
 private:
 
 	Contact		_ContactTab[8];
 	static int	_IndexContact;
 };
-
-#endif

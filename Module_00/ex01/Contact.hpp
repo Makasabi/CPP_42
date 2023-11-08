@@ -1,8 +1,8 @@
-#ifndef CONTACT_CLASS_HPP
-# define CONTACT_CLASS_HPP
+#pragma once
 
-# include <iostream>
-# include <string>
+#include "PhoneBook.hpp"
+#include "utils.hpp"
+#include "colors.hpp"
 
 class Contact {
 
@@ -32,5 +32,3 @@ private:
 	std::string _darkestSecret;
 
 };
-
-#endif
