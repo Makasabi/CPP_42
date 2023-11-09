@@ -1,6 +1,6 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
-#include "utils.hpp"
+#include "main.hpp"
 #include "colors.hpp"
 
 PhoneBook::PhoneBook(void) {
@@ -72,20 +72,22 @@ void	PhoneBook::searchContact( void ) {
 	std::string	buff;
 	displayContacts();
 	std::cout << _BOLD _CYAN << "Select an index between 0 & 7 to display a contact:\n" << _END << std::endl;
-	std::cin >> buff;
-	if (std::cin.eof())
-		return printError("Bad decision!");
+	while (buff.size() == 0) {
+		std::getline(std::cin, buff);
+		if (std::cin.eof())
+			printError("Bad decision!");
+	}
 	std::cout << std::endl;
 	if (buff[0] < '0' || buff[0] > '7' || atoi(buff.c_str()) < 0 || atoi(buff.c_str()) > 7)
-		printError("Bad request!");
+		std::cout << _MAGENTA << "Bad request!" << _END << std::endl;
 	else
 		printContact(_ContactTab[atoi(buff.c_str())]);
 }
 
 void	PhoneBook::exitPhoneBook( void ) {
 
-	std::cout << _BOLD << _LAGOON << "Bye bye Phonebook!" << _END << std::endl;
-	std::cout << _LAGOON << _GREYER << "All contacts data erased." << _END << std::endl;
+	std::cout << _BOLD << _LAGOON << "Bye bye Minitel!" << _END << std::endl;
+	std::cout << _LAGOON << _GREYER << "All contact data erased" << _END << std::endl;
 	exit (EXIT_FAILURE);
 }
 

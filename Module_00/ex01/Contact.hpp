@@ -1,7 +1,7 @@
 #pragma once
 
 #include "PhoneBook.hpp"
-#include "utils.hpp"
+#include "main.hpp"
 #include "colors.hpp"
 
 class Contact {
