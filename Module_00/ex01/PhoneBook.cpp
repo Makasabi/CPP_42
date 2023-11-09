@@ -9,7 +9,6 @@ PhoneBook::PhoneBook(void) {
 }
 
 PhoneBook::~PhoneBook(void) {
-
 	return ;
 }
 
@@ -21,12 +20,10 @@ void	PhoneBook::addContact( void ) {
 	if (buff.empty())
 		return ;
 	_ContactTab[_IndexContact].setFirstName(buff);
-
 	buff =	getData("Last Name");
 	if (buff.empty())
 		return ;
 	_ContactTab[_IndexContact].setLastName(buff);
-
 	buff =	getData("Nickname");
 	if (buff.empty())
 		return ;
