@@ -71,7 +71,7 @@ int main(void) {
 			std::cout << _BOLD << "\nMENU\nYou can either ADD or SEARCH for a contact, or EXIT Minitel" << _END << std::endl;
 			std::cout << "Type a command:\n" << std::endl;
 		}
-		std::cin >> buff;
+		std::getline(std::cin, buff);
 		if (std::cin.eof())
 		{
 			printError("Bad decision!");
