@@ -1,3 +1,5 @@
+#include <iostream>
+#include <iostream>
 # COLORS #
 
 _END			=	\033[0m
@@ -9,15 +11,13 @@ _ORANGE			=	\033[38;5;208m
 
 # MAKEFILE #
 
-NAME 			=	walkingDead
+NAME 			=	harl
 
 CC				=	c++
 CFLAGS			=	-Wall -Wextra -Werror -std=c++98
 
 SRCS			=	main.cpp \
-					Zombie.cpp \
-					newZombie.cpp \
-					randomChump.cpp 
+					Harl.cpp
 
 OBJS_PATH		=	./objs
 OBJS_NAMES		=	$(SRCS:.cpp=.o)
@@ -35,7 +35,7 @@ $(OBJS_PATH) :
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	@echo "$(_YELLOW)Usage : ./$(NAME)$(_END)"
+	@echo "$(_YELLOW)Usage : ./$(NAME) $(_GREYER) Complain level [DEBUG], [INFO], [WARNING] or [ERROR]$(_END)"
 
 clean:
 	@rm -rf $(OBJS_PATH)

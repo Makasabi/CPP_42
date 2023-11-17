@@ -1,3 +1,5 @@
+#include <iostream>
+#include <iostream>
 # COLORS #
 
 _END			=	\033[0m
@@ -16,8 +18,7 @@ CFLAGS			=	-Wall -Wextra -Werror -std=c++98
 
 SRCS			=	main.cpp \
 					Zombie.cpp \
-					newZombie.cpp \
-					randomChump.cpp 
+					zombieHorde.cpp
 
 OBJS_PATH		=	./objs
 OBJS_NAMES		=	$(SRCS:.cpp=.o)

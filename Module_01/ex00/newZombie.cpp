@@ -2,9 +2,7 @@
 
 Zombie* newZombie( std::string name ) {
 
-	Zombie* deadGuy;
+	Zombie*		deadGuy = new Zombie(name);
 
-	deadGuy._name = name;
-
-	return
+	return (deadGuy);
 }

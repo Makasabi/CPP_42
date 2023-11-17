@@ -39,6 +39,7 @@ $(NAME): $(OBJS)
 
 clean:
 	@rm -rf $(OBJS_PATH)
+	@rm *.replace
 	@echo "$(_RED)Cleaning the mess$(_END)"
 
 fclean:clean

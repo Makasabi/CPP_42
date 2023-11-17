@@ -5,6 +5,7 @@
 # include <string>
 # include <cstring>
 # include <fstream>
+# include <sstream>
 # include "colors.hpp"
 
 int		sedString(std::string infile, std::string s1, std::string s2);
