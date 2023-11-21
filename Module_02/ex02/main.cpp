@@ -14,15 +14,15 @@ int main() {
 	std::cout << _BOLD << "Value of cold:\t\t" << cold << _END << std::endl;
 	std::cout << _BOLD <<"Value of hot:\t\t" << hot << _END << std::endl;
 
-	std::cout << "\ncold > hot ?\t\t" << (cold > hot ?FALSE:TRUE) << std::endl;
-	std::cout << "cold < hot ?\t\t" << (cold < hot ?FALSE:TRUE) << std::endl;
+	std::cout << "\ncold > hot ?\t\t" << (cold > hot ?TRUE:FALSE) << std::endl;
+	std::cout << "cold < hot ?\t\t" << (cold < hot ?TRUE:FALSE) << std::endl;
 
-	std::cout << "\ncold >= hot ?\t\t" << (cold >= hot ?FALSE:TRUE) << std::endl;
-	std::cout << "cold >= cold ?\t\t" << (cold >= cold ?FALSE:TRUE) << std::endl;
-	std::cout << "cold <= hot ?\t\t" << (cold <= hot ?FALSE:TRUE) << std::endl;
+	std::cout << "\ncold >= hot ?\t\t" << (cold >= hot ?TRUE:FALSE) << std::endl;
+	std::cout << "cold >= cold ?\t\t" << (cold >= cold ?TRUE:FALSE) << std::endl;
+	std::cout << "cold <= hot ?\t\t" << (cold <= hot ?TRUE:FALSE) << std::endl;
 
-	std::cout << "\ncold == cold ?\t\t" << (cold == cold ?FALSE:TRUE) << std::endl;
-	std::cout << "cold != cold ?\t\t" << (cold != cold ?FALSE:TRUE) << std::endl;
+	std::cout << "\ncold == cold ?\t\t" << (cold == cold ?TRUE:FALSE) << std::endl;
+	std::cout << "cold != cold ?\t\t" << (cold != cold ?TRUE:FALSE) << std::endl;
 }
 {
 	std::cout << _BOLD << _CYAN << "\n/////////\t\tARITMETIC OPERATORS\t\t/////////\n" << _END << std::endl;
