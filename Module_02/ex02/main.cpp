@@ -59,7 +59,12 @@ int main() {
 	std::cout << _BOLD << "Value of a:\t\t" << a << _END << std::endl;
 	std::cout << "\nPre-incrementing a:\t" << ++a << std::endl;
 	std::cout << "Value of a:\t\t" << a << std::endl;
-	std::cout << "Post-incrementing a:\t" << ++a << std::endl;
+	std::cout << "Post-incrementing a:\t" << a++ << std::endl;
+	std::cout << "\nValue of a:\t\t" << a << std::endl;
+
+	std::cout << "\nPre-decrementing a:\t" << --a << std::endl;
+	std::cout << "Value of a:\t\t" << a << std::endl;
+	std::cout << "Post-decrementing a:\t" << a-- << std::endl;
 	std::cout << "Value of a:\t\t" << a << std::endl;
 }
 {
