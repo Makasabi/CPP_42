@@ -4,12 +4,12 @@
 #define INVARG "Invalid number of arguments"
 #define TRUE _FOREST_GREEN "TRUE\t(0)" _END
 #define FALSE _RED "FALSE\t(1)" _END
-
 int main() {
+
 {
 	std::cout << _BOLD << _CYAN << "\n/////////\t\tCOMPARISON OPERATORS\t\t/////////\n" << _END << std::endl;
 	
-	Fixed cold(-5), hot(35.5f);
+	Fixed cold(0), hot(35.5f);
 
 	std::cout << _BOLD << "Value of cold:\t\t" << cold << _END << std::endl;
 	std::cout << _BOLD <<"Value of hot:\t\t" << hot << _END << std::endl;
@@ -27,30 +27,30 @@ int main() {
 {
 	std::cout << _BOLD << _CYAN << "\n/////////\t\tARITMETIC OPERATORS\t\t/////////\n" << _END << std::endl;
 	
-	Fixed Two(2), OneHalf(1.5f);
+	Fixed x(2), y(1.5f);
 
-	std::cout << _BOLD << "Value of Two:\t\t" << Two << _END << std::endl;
-	std::cout << _BOLD << "Value of OneHalf:\t" << OneHalf << _END << std::endl;
+	std::cout << _BOLD << "Value of x:\t\t" << x << _END << std::endl;
+	std::cout << _BOLD << "Value of y:\t\t" << y << _END << std::endl;
 
 	std::cout << _BOLD << _YELLOW << "\nAdditions" << _END << std::endl;
-	std::cout << Two << " + " << OneHalf << "\t\t=\t" << Two + OneHalf << std::endl;
-	std::cout << Two << " + " << Two << "\t\t=\t" << Two + Two  << std::endl;
-	std::cout << OneHalf << " + " << OneHalf << "\t=\t" << OneHalf + OneHalf << std::endl;
+	std::cout << x << " + " << y << "\t\t=\t" << x + y << std::endl;
+	std::cout << x << " + " << x << "\t\t=\t" << x + x  << std::endl;
+	std::cout << y << " + " << y << "\t=\t" << y + y << std::endl;
 
 	std::cout << _BOLD << _YELLOW << "\nSubtractions" << _END << std::endl;
-	std::cout << Two << " - " << OneHalf << "\t\t=\t" << Two - OneHalf << std::endl;
-	std::cout << Two << " - " << Two << "\t\t=\t" << Two - Two  << std::endl;
-	std::cout << OneHalf << " - " << OneHalf << "\t=\t" << OneHalf - OneHalf << std::endl;
+	std::cout << x << " - " << y << "\t\t=\t" << x - y << std::endl;
+	std::cout << x << " - " << x << "\t\t=\t" << x - x  << std::endl;
+	std::cout << y << " - " << y << "\t=\t" << y - y << std::endl;
 
 	std::cout << _BOLD << _YELLOW << "\nMultiplications" << _END << std::endl;
-	std::cout << Two << " * " << OneHalf << "\t\t=\t" << Two * OneHalf << std::endl;
-	std::cout << Two << " * " << Two << "\t\t=\t" << Two * Two  << std::endl;
-	std::cout << OneHalf << " * " << OneHalf << "\t=\t" << OneHalf * OneHalf << std::endl;
+	std::cout << x << " * " << y << "\t\t=\t" << x * y << std::endl;
+	std::cout << x << " * " << x << "\t\t=\t" << x * x  << std::endl;
+	std::cout << y << " * " << y << "\t=\t" << y * y << std::endl;
 
 	std::cout << _BOLD << _YELLOW << "\nDivisions" << _END << std::endl;
-	std::cout << Two << " / " << OneHalf << "\t\t=\t" << Two / OneHalf << std::endl;
-	std::cout << Two << " / " << Two << "\t\t=\t" << Two / Two  << std::endl;
-	std::cout << OneHalf << " / " << OneHalf << "\t=\t" << OneHalf / OneHalf << std::endl;
+	std::cout << x << " / " << y << "\t\t=\t" << x / y << std::endl;
+	std::cout << x << " / " << x << "\t\t=\t" << x / x  << std::endl;
+	std::cout << y << " / " << y << "\t=\t" << y / y << std::endl;
 }
 {
 	std::cout << _BOLD << _CYAN << "\n/////////\t\tINCREMENTATION OPERATORS\t/////////\n" << _END << std::endl;
