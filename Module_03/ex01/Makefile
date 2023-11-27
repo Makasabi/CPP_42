@@ -9,15 +9,14 @@ _ORANGE			=	\033[38;5;208m
 
 # MAKEFILE #
 
-NAME 			=	bsp
+NAME 			=	ScavTrap
 
 CC				=	c++
 CFLAGS			=	-Wall -Wextra -Werror -std=c++98
 
 SRCS			=	main.cpp \
-					Fixed.cpp \
-					bsp.cpp \
-					Point.cpp
+					ClapTrap.cpp \
+					ScavTrap.cpp
 
 OBJS_PATH		=	./objs
 OBJS_NAMES		=	$(SRCS:.cpp=.o)

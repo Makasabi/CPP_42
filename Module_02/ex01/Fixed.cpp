@@ -1,26 +1,32 @@
 #include "Fixed.hpp"
 
-//////////////// CONSTRUCTORS ////////////////
+/********************************************/
+/*		CONSTRUCTORS - DESTRUCTOR			*/
+/********************************************/
 
 /* Default constructor - sets _rawbit to 0*/
+
 Fixed::Fixed( void ) : _RawBits( 0 ) {
 
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << _GREYER << "Default constructor called" << _END << std::endl;
 	return;
 }
 
 /* Copy constructor - returns a pointer to the copy of the instance passed as arg */
+
 Fixed::Fixed( Fixed const & src ) {
 
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << _FOREST_GREEN << "Copy constructor called" << _END << std::endl;
 	*this = src;
 	return;
 }
 
-/* Constructor using an int - the int is bit-shifted by _bits to the left. Security check implemented to protect int that don't fit in 24bits*/
+/* Constructor using an int - the int is bit-shifted by _bits to the left. 
+Security check implemented to protect int that don't fit in 24bits*/
+
 Fixed::Fixed(const int n ) {
 
-	std::cout << "Int constructor called" << std::endl;
+	std::cout << _PURPLE << "Int constructor called" << _END << std::endl;
 	if (n > (1 << 23) || n < -(1 << 23) -1 ) {
 		std::cout << "Int" << TOO_BIG << std::endl;
 		this->_RawBits = 0;
@@ -31,10 +37,12 @@ Fixed::Fixed(const int n ) {
 }
 
 
-/* Constructor using a float - the float is bit-shifted by _bits to the left. Security check implemented to protect floats that don't fit in 24bits*/
+/* Constructor using a float - the float is bit-shifted by _bits to the left. 
+Security check implemented to protect floats that don't fit in 24bits*/
+
 Fixed::Fixed(const float f ) {
 
-	std::cout << "Float constructor called" << std::endl;
+	std::cout << _RED << "Float constructor called" << _END << std::endl;
 	if (f > (1 << 23) || f < (-(1 << 23) -1) ) {
 		std::cout << "FLoat " << TOO_BIG << std::endl;
 		this->_RawBits = 0;
@@ -44,27 +52,40 @@ Fixed::Fixed(const float f ) {
 	return;
 }
 
-//////////////// DESTRUCTOR ////////////////
-
 Fixed::~Fixed (void) {
 
-	std::cout << "Destructor called" << std::endl;
+	std::cout << _GREYER << "Destructor called" << _END << std::endl;
 	return ;
 }
 
-//////////////// OPERATOR SURCHARGE ////////////////
+/********************************************/
+//				OPERATOR OVERLOAD			//
+/********************************************/
 
 
 /* This one allows for the copy constructor build a new instance of the class "Fixed" with the same value of _RawBits*/
 Fixed &	Fixed::operator=( Fixed const & rhs ) {
 
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << _YELLOW << "Copy assignment operator called" << _END << std::endl;
 
 	this->_RawBits = rhs.getRawBits();
 	return *this;
 }
 
-//////////////// MEMBER FUNCTION ////////////////
+/********************************************/
+//				OSTREAM OVERLOAD			//
+/********************************************/
+
+std::ostream & operator<<(std::ostream & a, Fixed const & rhs){
+
+	a << rhs.toFloat();
+	return a;
+}
+
+
+/********************************************/
+//				MEMBER FUNCTIONS			//
+/********************************************/
 
 /* getter of private attribute _Rawbits*/
 int		Fixed::getRawBits( void ) const {
@@ -90,12 +111,4 @@ float	Fixed::toFloat( void ) const {
 int		Fixed::toInt( void ) const {
 
 	return (this->getRawBits() >> this->_bits);
-}
-
-//////////////// OPERATOR SURCHARGE ////////////////
-
-std::ostream & operator << (std::ostream & a, Fixed const & rhs){
-
-	a << rhs.toFloat();
-	return a;
 }
