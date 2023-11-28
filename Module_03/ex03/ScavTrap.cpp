@@ -53,6 +53,7 @@ void ScavTrap::attack(const std::string& target) {
 	}
 	std::cout << _SALMON << "\n🪓 " << _name << " has gone rogue and attacked " << target << ", causing [" << _attackDamage << "] points of damage! 🪓" << _END << std::endl;
 	setEnergyPoint(getEnergyPoint() - 1);
+	std::cout << "\t🍃 " << _name << "'s remaining energy points:\t[" << _energyPoint << "]" << std::endl;
 	return ;
 }
 

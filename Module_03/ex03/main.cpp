@@ -6,12 +6,13 @@
 
 int main(void) {
 
-	// ClapTrap Hobbit("Bilbo Baggins");
-	// ScavTrap Orc( "Azog" );
-	// FragTrap Elf( "Legolas" );
 	DiamondTrap Gandalf("Gandalf");
 
 	Gandalf.whoAmI();
+	Gandalf.attack("Saruman");
+	Gandalf.beRepaired(10);
+	Gandalf.highFivesGuys();
+	Gandalf.guardGate();
 
 	return 0;
 }
