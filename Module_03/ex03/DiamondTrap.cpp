@@ -22,7 +22,7 @@ DiamondTrap::DiamondTrap( std::string const & name ) : ClapTrap(), ScavTrap(), F
 }
 
 
-DiamondTrap::DiamondTrap( DiamondTrap const & src) {
+DiamondTrap::DiamondTrap( DiamondTrap const & src) : ClapTrap(), ScavTrap(), FragTrap() {
 
 	std::cout << _LAGOON << "DiamondTrap - Copy constructor called: " << _name << " is born 🧙" << _END << std::endl;
 	*this = src;
@@ -55,7 +55,7 @@ void	DiamondTrap::whoAmI() {
 	std::cout << "here are my specs :" << std::endl;
 	std::cout << "Hit Points :\t" << _hitPoint << std::endl;
 	std::cout << "EnergyPoint :\t" << _energyPoint << std::endl;
-	std::cout << "Attack Damage :\t" << _attackDamage << "\n" << std::endl;
+	std::cout << "Attack Damage :\t" << _attackDamage << std::endl;
 
 	// std::cout << "\nI inherited from ClapTrap, " << std::endl;
 	// std::cout << "Name :\t\t" << ClapTrap::_name << std::endl;

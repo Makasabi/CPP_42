@@ -12,7 +12,7 @@ _ORANGE			=	\033[38;5;208m
 NAME 			=	DiamondTrap
 
 CC				=	c++
-CFLAGS			=	-Wall -Wextra -Werror -Wno-shadow -Wshadow -std=c++98
+CFLAGS			=	-Wall -Wextra -Werror -Wshadow -std=c++98
 
 SRCS			=	main.cpp \
 					ClapTrap.cpp \
