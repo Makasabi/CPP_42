@@ -1,26 +1,26 @@
 #include "FragTrap.hpp"
 #include <cstring>
 
-FragTrap::FragTrap( void ) : ClapTrap() {
+FragTrap::FragTrap(void) : ClapTrap() {
 
-	this->setHitPoint(100);
-	this->setEnergyPoint(100);
-	this->setAttackDamage(30);
+	_hitPoint = 100;
+	_energyPoint = 100;
+	_attackDamage = 30;
 	std::cout << _CYAN << "FragTrap - Default constructor called: " << _name << " is born 🧝" << _END << std::endl;
 	return;
 }
 
-FragTrap::FragTrap( std::string name ) : ClapTrap(name){
+FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 
-	this->setHitPoint(100);
-	this->setEnergyPoint(100);
-	this->setAttackDamage(30);
+	_hitPoint = 100;
+	_energyPoint = 100;
+	_attackDamage = 30;
 	std::cout << _CYAN << "FragTrap - Parametric constructor called: " << _name << " is born 🧝" << _END << std::endl;
 	return ;
 }
 
 
-FragTrap::FragTrap( FragTrap const & src) {
+FragTrap::FragTrap(FragTrap const & src) : ClapTrap() {
 
 	std::cout << _CYAN << "FragTrap - Copy constructor called: " << _name << " is born 🧝" << _END << std::endl;
 	*this = src;
@@ -42,8 +42,12 @@ FragTrap & FragTrap::operator=(FragTrap const & src) {
 	return *this;
 }
 
-void FragTrap::highFivesGuys( void ) {
+void FragTrap::highFivesGuys(void) {
 
+	if (_energyPoint <= 0 || _hitPoint <= 0) {
+		std::cout << _MAGENTA << _name << " doesn't have enough energy or hit points for this !" << _END << std::endl;
+		return;
+	}
 	std::string buff;
 	std::cout << _LAGOON << "🗡️ " << _name << " is making a battle speech to rally forces " << std::endl;
 	std::cout << _GREYER <<  "Show your support for frodo..." << _END << std::endl;
@@ -55,5 +59,3 @@ void FragTrap::highFivesGuys( void ) {
 	std::cout << _BOLD << "Yiiihhhaaaaaaaaaa!" << _END <<std::endl;
 	return;
 }
-
-	

@@ -2,24 +2,24 @@
 
 ScavTrap::ScavTrap( void ) : ClapTrap() {
 
-	this->setHitPoint(100);
-	this->setEnergyPoint(100);
-	this->setAttackDamage(20);
+	_hitPoint = 100;
+	_energyPoint = 50;
+	_attackDamage = 20;
 	std::cout << "ScavTrap - Default constructor called: " << _name << " is born. 🧌" << std::endl;
 	return;
 }
 
 ScavTrap::ScavTrap( std::string name ) : ClapTrap(name){
 
-	this->setHitPoint(100);
-	this->setEnergyPoint(100);
-	this->setAttackDamage(20);
+	_hitPoint = 100;
+	_energyPoint = 50;
+	_attackDamage = 20;
 	std::cout << "ScavTrap - Parametric constructor called: " << _name << " is born. 🧌" << std::endl;
-	return ;
+	return;
 }
 
 
-ScavTrap::ScavTrap( ScavTrap const & src) {
+ScavTrap::ScavTrap( ScavTrap const & src) : ClapTrap() {
 
 	std::cout << "ScavTrap - Copy constructor called: " << _name << " is born. 🧌" << _END << std::endl;
 	*this = src;
@@ -43,21 +43,22 @@ ScavTrap & ScavTrap::operator=(ScavTrap const & src) {
 
 void ScavTrap::attack(const std::string& target) {
 	
-	if (getEnergyPoint() == 0) {
-		std::cout << _MAGENTA << _name << " doesn't have enough energy for this !" << _END << std::endl;
-		return;
-	}
-	if (getHitPoint() <= 0) {
-		std::cout << _MAGENTA << _name << " has died already" << _END << std::endl;
+	if (_energyPoint <= 0 || _hitPoint <= 0) {
+		std::cout << _MAGENTA << _name << " doesn't have enough energy or hit points for this !" << _END << std::endl;
 		return;
 	}
 	std::cout << _SALMON << "\n🪓 " << _name << " has gone rogue and attacked " << target << ", causing [" << _attackDamage << "] points of damage! 🪓" << _END << std::endl;
-	setEnergyPoint(getEnergyPoint() - 1);
+	_energyPoint = _energyPoint - 1;
+	std::cout << "\t🍃 " << _name << "'s remaining energy points:\t[" << _energyPoint << "]" << std::endl;
 	return ;
-}
+}	
 
 void ScavTrap::guardGate( void ) {
 
+	if (_energyPoint <= 0 || _hitPoint <= 0) {
+		std::cout << _MAGENTA << _name << " doesn't have enough energy or hit points for this !" << _END << std::endl;
+		return;
+	}
 	std::cout << _KAKI << "\n🛡️  " << _name << " is now in guard mode..." << _END << std::endl;
 	return ;
 }

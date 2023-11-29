@@ -9,10 +9,15 @@ int main(void) {
 	DiamondTrap Gandalf("Gandalf");
 
 	Gandalf.whoAmI();
+	std::cout << std::endl;
 	Gandalf.attack("Saruman");
+	std::cout << std::endl;
 	Gandalf.beRepaired(10);
+	std::cout << std::endl;
 	Gandalf.highFivesGuys();
+	std::cout << std::endl;
 	Gandalf.guardGate();
+	std::cout << std::endl;
 
 	return 0;
 }

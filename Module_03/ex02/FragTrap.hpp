@@ -7,13 +7,13 @@ class FragTrap : public ClapTrap {
 
 public:
 
-	FragTrap( void );
-	~FragTrap (void );
-	FragTrap ( std::string name );
-	FragTrap ( FragTrap const & src );
-	FragTrap & operator=( FragTrap const &);
+	FragTrap(void);
+	~FragTrap(void);
+	FragTrap(std::string name);
+	FragTrap(FragTrap const & src);
+	FragTrap & operator=(FragTrap const &);
 
-	void highFivesGuys( void );
+	void highFivesGuys(void);
 };
 
 #endif

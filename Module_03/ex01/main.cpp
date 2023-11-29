@@ -5,7 +5,7 @@
 int main(void) {
 
 	ClapTrap Hobbit("Bilbo Baggins");
-	ScavTrap Orc( "Azog" );
+	ScavTrap Orc("Azog");
 
 	Hobbit.attack(Orc.getName());
 
@@ -16,10 +16,10 @@ int main(void) {
 	Hobbit.beRepaired(20);
 
 	Orc.attack(Hobbit.getName());
-	Hobbit.takeDamage(20);
+	Hobbit.takeDamage(Orc.getAttackDamage());
 
 	Orc.attack(Hobbit.getName());
-	Hobbit.takeDamage(20);
+	Hobbit.takeDamage(Orc.getAttackDamage());
 
 	return 0;
 }
