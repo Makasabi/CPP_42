@@ -50,7 +50,7 @@ void	DiamondTrap::attack( const std::string &  src) {
 
 void	DiamondTrap::whoAmI() {
 
-	std::cout << _BOLD << "\nI am " << _name << " also known as " << ClapTrap::_name << _END << std::endl;
+	std::cout << _BOLD << "I am " << _name << " also known as " << ClapTrap::_name << _END << std::endl;
 
 	std::cout << "here are my specs :" << std::endl;
 	std::cout << "Hit Points :\t" << _hitPoint << std::endl;

@@ -9,13 +9,15 @@ _ORANGE			=	\033[38;5;208m
 
 # MAKEFILE #
 
-NAME 			=	DiamondTrap
+NAME 			=	polymophism
 
 CC				=	c++
 CFLAGS			=	-Wall -Wextra -Werror -Wno-shadow -Wshadow -std=c++98
 
 SRCS			=	main.cpp \
-					Animal.cpp
+					Animal.cpp \
+					Cat.cpp \
+					Dog.cpp
 
 OBJS_PATH		=	./objs
 OBJS_NAMES		=	$(SRCS:.cpp=.o)

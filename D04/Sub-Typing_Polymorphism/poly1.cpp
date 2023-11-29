@@ -42,7 +42,7 @@ int main () {
 	Character*	a = new Warrior();
 
 	// this is also OK because Warrior IS a Character
-	Character*	b = new Warrior();
+	Character*	b = new Character();
 	Character*	c = new Mage();
 
 	// this would NOT be ok because Character IS NOT a warrior

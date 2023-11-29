@@ -1,7 +1,6 @@
 #include <string>
 #include <iostream>
 
-
 // Abstract class - can not be instancied
 class ACharacter { // A for Abstract
 	
