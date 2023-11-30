@@ -1,11 +1,12 @@
 #ifndef DOG_HPP
 # define DOG_HPP
 
-# include "Animal.hpp"
+# include "AAnimal.hpp"
+# include "Brain.hpp"
 
-class Dog: public Animal {
+class Dog: public AAnimal {
 
-	public:
+public:
 
 	Dog();
 	virtual ~Dog();
@@ -13,9 +14,13 @@ class Dog: public Animal {
 	Dog & operator=(Dog const &);
 
 	std::string getType(void) const;
+	Brain *getBrain(void) const;
 
 	virtual void	makeSound();
 
+private:
+
+	Brain *_brain;
 };
 
 #endif

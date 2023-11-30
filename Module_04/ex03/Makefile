@@ -9,17 +9,14 @@ _ORANGE			=	\033[38;5;208m
 
 # MAKEFILE #
 
-NAME 			=	polymophism
+NAME 			=	materia
 
 CC				=	c++
 CFLAGS			=	-Wall -Wextra -Werror -Wno-shadow -Wshadow -std=c++98
 
 SRCS			=	main.cpp \
-					Animal.cpp \
-					Cat.cpp \
-					Dog.cpp \
-					WrongAnimal.cpp \
-					WrongCat.cpp \
+					AMateria.cpp
+					
 
 OBJS_PATH		=	./objs
 OBJS_NAMES		=	$(SRCS:.cpp=.o)

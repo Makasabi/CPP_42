@@ -2,12 +2,14 @@
 
 Dog::Dog() : Animal() {
 
-	Animal::_type = ("Dog");
 	std::cout << _FOREST_GREEN <<  "Dog Constructor Called" << _END << std::endl;
+	Animal::_type = "Dog";
+	_brain = new Brain();
 }
 
 Dog::~Dog() { 
 
+	delete _brain;
 	std::cout << _FOREST_GREEN << "Dog Destructor Called" << _END << std::endl;
 }
 
@@ -20,7 +22,13 @@ Dog::Dog(Dog const & src) : Animal() {
 Dog & Dog::operator=(Dog const & src) { 
 
 	_type = src.Animal::getType();
+	_brain = new Brain(*src.getBrain());
 	return *this;
+}
+
+Brain *Dog::getBrain(void) const {
+
+	return _brain;
 }
 
 void	Dog::makeSound() {
