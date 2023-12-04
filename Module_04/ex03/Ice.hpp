@@ -3,18 +3,22 @@
 
 # include "AMateria.hpp"
 
+class ICharacter;
+
 class Ice : public AMateria {
 
 public:
 
-	Ice();
+	Ice(void);
+	Ice(std::string const & type);
 	~Ice();
 	Ice(Ice const & src);
 
 	Ice & operator=(Ice const & src);
 
-	std::string const & getType() const; //Returns the materia type
-	virtual AMateria* clone() const = 0;
+	std::string const & getType() const;
+
+	virtual AMateria* clone(void) const;
 	virtual void use(ICharacter& target);
 
 };

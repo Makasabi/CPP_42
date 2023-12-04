@@ -9,13 +9,17 @@ _ORANGE			=	\033[38;5;208m
 
 # MAKEFILE #
 
-NAME 			=	materia
+NAME 			=	finalFantasyVII
 
 CC				=	c++
-CFLAGS			=	-Wall -Wextra -Werror -Wno-shadow -Wshadow -std=c++98
+CFLAGS			=	-Wall -Wextra -Werror -std=c++98 -g
 
 SRCS			=	main.cpp \
-					AMateria.cpp
+					AMateria.cpp \
+					Ice.cpp \
+					Cure.cpp \
+					Character.cpp \
+					MateriaSource.cpp
 					
 
 OBJS_PATH		=	./objs
