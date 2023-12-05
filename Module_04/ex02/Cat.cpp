@@ -16,13 +16,15 @@ Cat::~Cat() {
 Cat::Cat(Cat const & src) : AAnimal() { 
 
 	std::cout << _PINK << "Cat Copy Constructor Called" << _END << std::endl;
-	*this = src;
+	this->_type = src.AAnimal::getType();
+	this->_brain = new Brain(*src.getBrain());
 }
 
 Cat & Cat::operator=(Cat const & src) { 
 
-	_type = src.AAnimal::getType();
-	_brain = new Brain(*src.getBrain());
+	this->_type = src.AAnimal::getType();
+	delete this->_brain;
+	this->_brain = new Brain(*src.getBrain());
 	return *this;
 }
 

@@ -5,21 +5,21 @@
 Character::Character(void) : ICharacter() {
 
 	std::cout << _ITALIC << _GREYER << "Character - default constructor called" << _END << std::endl;
-	for (int i = 0; i < 4; i++)
+	for (std::size_t i = 0; i < 4; i++)
 		this->_materias[i] = NULL;
 }
 
 Character::Character(std::string name) : ICharacter(), _name(name) {
 
 	std::cout << _ITALIC << _GREYER << "Character - parametric constructor called" << _END << std::endl;
-	for (int i = 0; i < 4; i++)
+	for (std::size_t i = 0; i < 4; i++)
 		this->_materias[i] = NULL;
 }
 
 Character::~Character() {
 
 	std::cout << _ITALIC << _GREYER << "Character - destructor called" << _END << std::endl;
-	for (int i = 0; i < 4; i++) {
+	for (std::size_t i = 0; i < 4; i++) {
 		if (_materias[i] != NULL)
 			delete this->_materias[i];
 	}
@@ -28,21 +28,20 @@ Character::~Character() {
 Character::Character(Character const & src) : ICharacter() {
 
 	std::cout << _ITALIC << _GREYER << "Character - copy constructor called" << _END << std::endl;
-	for (int i = 0; i < 4; i++) {
-		if (this->_materias[i] != NULL) {
-			delete this->_materias[i];
-			this->_materias[i] = NULL;
-		}
-	}
 	*this = src;
 }
 
 Character & Character::operator=(Character const & src){
 
 	std::cout << _ITALIC << _GREYER << "Character - copy operator called" << _END << std::endl;
-	for (int i = 0; i < 4; i++) {
-		if (src._materias[i] != NULL)
+	for (std::size_t i = 0; i < 4; i++) {
+		if (this->_materias[i] != NULL){
+			delete this->_materias[i];
+			this->_materias[i] = NULL;
+		}
+		if (src._materias[i] != NULL) {
 			this->_materias[i] = src._materias[i]->clone();
+		}
 	}
 	this->_name = src.getName();
 	return *this;
@@ -65,7 +64,11 @@ void Character::equip(AMateria* m){
 
 	if (m == 0)
 		return;
-	for (int i = 0; i < 4; i++){
+	for (std::size_t i = 0; i < 4; i++){
+		if (this->_materias[i] == m)
+			return;
+	}
+	for (std::size_t i = 0; i < 4; i++){
 		if (this->_materias[i] == NULL) {
 			this->_materias[i] = m;
 			break;

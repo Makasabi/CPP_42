@@ -21,6 +21,7 @@ public:
 private:
 
 	Brain *_brain;
+
 };
 
 #endif

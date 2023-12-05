@@ -12,7 +12,9 @@ _ORANGE			=	\033[38;5;208m
 NAME 			=	brain
 
 CC				=	c++
-CFLAGS			=	-Wall -Wextra -Werror -Wno-shadow -Wshadow -std=c++98
+CFLAGS			=	-Wall -Wextra -Werror -std=c++98 -g
+
+#-Wno-shadow -Wshadow 
 
 SRCS			=	main.cpp \
 					Animal.cpp \

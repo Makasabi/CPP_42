@@ -4,10 +4,6 @@
 #include "Brain.hpp"
 
 int main () {
-// { 
-// 	AAnimal *Random = new AAnimal; ---> Impossible - because AAnimal is an abstract class!
-// 	Random->makeSound();
-// }
 {
 	const int n = 4;
 
@@ -29,6 +25,18 @@ int main () {
 		delete gang[i];
 	}
 }
+{
+	Dog rocky;
+	Dog rider;
 
+	rocky = rider;
+	
+}
 	return 0;
 }
+
+
+// { 
+// 	AAnimal *Random = new AAnimal; ---> Impossible - because AAnimal is an abstract class!
+// 	Random->makeSound();
+// }

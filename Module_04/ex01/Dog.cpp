@@ -16,13 +16,15 @@ Dog::~Dog() {
 Dog::Dog(Dog const & src) : Animal() { 
 
 	std::cout << _FOREST_GREEN << "Dog Copy Constructor Called" << _END << std::endl;
-	*this = src;
+	this->_type = src.Animal::getType();
+	this->_brain = new Brain(*src.getBrain());
 }
 
 Dog & Dog::operator=(Dog const & src) { 
 
-	_type = src.Animal::getType();
-	_brain = new Brain(*src.getBrain());
+	this->_type = src.Animal::getType();
+	delete this->_brain;
+	this->_brain = new Brain(*src.getBrain());
 	return *this;
 }
 

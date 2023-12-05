@@ -27,9 +27,3 @@ std::string AAnimal::getType() const {
 
 	return _type;
 }
-
-// void	AAnimal::makeSound() {
-
-// 	std::cout << "*not a single sound*" << std::endl;
-// 	return;
-// }

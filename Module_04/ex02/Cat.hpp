@@ -4,10 +4,10 @@
 # include "AAnimal.hpp"
 # include "Brain.hpp"
 
+
 class Cat: public AAnimal {
 
 public:
-
 	Cat();
 	virtual ~Cat();
 	Cat(Cat const & src);
@@ -19,7 +19,6 @@ public:
 	virtual void	makeSound();
 
 private:
-
 	Brain *_brain;
 };
 

@@ -4,14 +4,16 @@
 #include "Brain.hpp"
 
 int main () {
-
+{
 	const int n = 10;
+
+	Cat kitty;
 
 	Animal* gang[n];
 
 	for (int i = 0; i < n; i++){
 		if (i < n / 2)
-			gang[i] = new Cat();
+			gang[i] = new Cat(kitty);
 		else
 			gang[i] = new Dog();
 	}
@@ -25,5 +27,12 @@ int main () {
 		delete gang[i];
 	}
 
+}
+{
+	Cat kitty;
+	Cat hello;
+
+	hello = kitty;
+}
 	return 0;
 }
