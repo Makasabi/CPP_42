@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("Andrea"), _grade(75) {
+Bureaucrat::Bureaucrat() : _name("Karen"), _grade(75) {
 
 	std::cout << _GREYER << _ITALIC << "Bureaucrat - Default constructor called" << _END << std::endl;
 };
@@ -107,6 +107,18 @@ void Bureaucrat::decrementGrade(unsigned char const dec) {
 	}
 	std::cout << "❯❯❯ " << *this;
 }
+
+void Bureaucrat::signForm(Form & paper) {
+
+	try {
+		paper.beSigned(*this);
+		std::cout << _FOREST_GREEN << this->_name << " signed " << paper.getName() << _END << std::endl;
+	}
+	catch (std::exception& ex) {
+		std::cout << this->_name << " couldn't sign " << paper.getName() << " because " << ex.what();
+	}
+}
+
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs) {
 	

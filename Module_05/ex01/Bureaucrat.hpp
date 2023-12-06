@@ -4,6 +4,9 @@
 # include <string>
 # include <iostream>
 # include "colors.hpp"
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 
@@ -27,6 +30,8 @@ public:
 
 	void decrementGrade(); // ++
 	void decrementGrade(unsigned char const); // + n
+
+	void signForm(Form &);
 
 	class GradeTooHighException : public std::exception {
 		virtual const char* what() const throw() { return _RED "Grade too high!\n" _END;

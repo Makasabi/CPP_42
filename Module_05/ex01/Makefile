@@ -9,13 +9,14 @@ _ORANGE			=	\033[38;5;208m
 
 # MAKEFILE #
 
-NAME 			=	bureaucrat
+NAME 			=	forms
 
 CC				=	c++
 CFLAGS			=	-Wall -Wextra -Werror -std=c++98 -MMD -g
 
 SRCS			=	main.cpp \
 					Bureaucrat.cpp \
+					Form.cpp \
 
 OBJS_PATH		=	./objs
 OBJS_NAMES		=	$(SRCS:.cpp=.o)
