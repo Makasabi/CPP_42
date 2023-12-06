@@ -26,7 +26,7 @@ Form::~Form(void) {
 
 Form & Form::operator=(Form const & src) {
 
-	this->_authograph = src.getAuthograph();
+	(void)src;
 	return *this;
 }
 

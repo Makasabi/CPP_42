@@ -5,18 +5,18 @@
 # include <iostream>
 # include "Bureaucrat.hpp"
 
-
 # define TRUE _FOREST_GREEN "YES" _END
 # define FALSE _RED "NO" _END
+
 class Bureaucrat;
 
-class Form {
+class AForm {
 
 public:
 	Form();
 	Form(std::string const &, unsigned char const, unsigned char const);
 	Form(Form const &);
-	~Form();
+	virtual ~Form();
 
 	Form & operator=(Form const &);
 
@@ -26,6 +26,7 @@ public:
 	unsigned char	getGradeExec(void) const;
 
 	void			beSigned(Bureaucrat const &);
+	void 			execute(Bureaucrat const & executor) const = 0;
 
 	class GradeTooHighException : public std::exception {
 		virtual const char* what() const throw() { return _RED "Grade too high!\n" _END;
@@ -48,7 +49,7 @@ private:
 
 };
 
-std::ostream & operator<<(std::ostream & o, Form const & rhs);
+std::ostream & operator<<(std::ostream & o, AForm const & rhs);
 
 
 #endif
