@@ -3,15 +3,65 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 #include <unistd.h>
 
 int main (void) {
 
+	std::cout << _REV << "\t\t\t\t TEST POOL 0\n" << _END << std::endl;
+{
+	Intern intern;
+	Bureaucrat papa("papa", 1);
+
+	// Intern tries to create a form with a wrong name : FAIL
+	try {
+		AForm * form = intern.makeForm("Merry Christmas", "eleven");
+		(void)form;
+	}
+	catch (Intern::FormNotRecognised &e){
+		std::cout << e.what();
+	}
+
+	// Intern tries to create a form with a correct name : SUCCESS
+	try {
+		AForm * form = intern.makeForm("presidential pardon", "Grandma");
+		papa.signForm(*form);
+		papa.executeForm(*form);
+		delete form;
+	}
+	catch (Intern::FormNotRecognised &e){
+		std::cout << e.what();
+	}
+}
 	std::cout << _REV << "\t\t\t\t TEST POOL 1\n" << _END << std::endl;
+
 {	
-	AForm * form = new ShrubberyCreationForm("home");
+
 	Bureaucrat guy("Paul", 138);
 	Bureaucrat girl("Paula", 10);
+	Intern intern;
+
+	// Intern tries to create a form with a wrong name : FAIL
+	try {
+		AForm * form = intern.makeForm("Merry Christmas", "eleven");
+		(void)form;
+	}
+	catch (Intern::FormNotRecognised &e){
+		std::cout << e.what();
+	}
+
+	// Intern tries to create a form with an incomplete name : FAIL
+	try {
+		AForm * form = intern.makeForm("presidential", "eleven");
+		(void)form;
+	}
+	catch (Intern::FormNotRecognised &e){
+		std::cout << e.what();
+	}
+
+	// Intern tries to create a form with a correct name : SUCCESS
+	try {
+		AForm * form = intern.makeForm("shrubbery creation", "home");
 
 	// Printing the infos
 	std::cout << guy;
@@ -57,12 +107,21 @@ int main (void) {
 	// trying to sign the form from the Bureaucrate: : ERROR --> Grade of Paula is too low
 	girl.executeForm(*form);
 	delete form;
+	}
+
+	catch (Intern::FormNotRecognised &e){
+		std::cout << e.what();
+	}
 }
 	std::cout << _REV << "\n\t\t\t\t TEST POOL 2\n" << _END << std::endl;
 
 {
-	AForm * prisonner = new PresidentialPardonForm("Jazon");
 	Bureaucrat president("Zaphod Beeblebrox", 6);
+	Intern intern;
+
+	// Intern tries to create a form with a correct name : SUCCESS
+	try {
+		AForm * prisonner = intern.makeForm("presidential pardon", "Jazon");
 
 	//printing infos of President and prisonner
 	std::cout << president << std::endl;
@@ -81,35 +140,50 @@ int main (void) {
 	std::cout << std::endl;
 	// trying to sign the form from the Bureaucrate: : SUCESS
 	president.executeForm(*prisonner);
-
 	delete prisonner;
+	}
+	catch (Intern::FormNotRecognised &e) {
+		std::cout << e.what();
+	}
+
 }
 
 	std::cout << _REV << "\n\t\t\t\t TEST POOL 3\n" << _END << std::endl;
 {
-	AForm * patientone = new RobotomyRequestForm("Crazy patient");
-	AForm * patienttwo = new RobotomyRequestForm("Another Crazy patient");
+	try { 
+
 	Bureaucrat doctor("Dr. Even-Crazier", 35);
 	Bureaucrat nurse("Mr. Nurse", 70);
+	Intern	medicalIntern;
+	AForm * patientone = medicalIntern.makeForm("robotomy request", "Crazy patient");
+	AForm * patienttwo = medicalIntern.makeForm("robotomy request", "Another Crazy patient");
 
+	//printing infos of Doctor, Nurse, patientone & patienttwo
 	std::cout << nurse ;
 	std::cout << doctor << std::endl;
 	std::cout << *patientone;
 	std::cout << *patienttwo;
 	std::cout << std::endl;
+
+	// Nurse tries to execute form : ERROR -> --> Form is not signed
 	nurse.executeForm(*patientone);
 	nurse.executeForm(*patienttwo);
 	std::cout << std::endl;
+
+	// Nurse tries to sign form : SUCCESS
 	nurse.signForm(*patientone);
 	nurse.signForm(*patienttwo);
 
 	std::cout << *patientone;
 	std::cout << *patienttwo;
 	std::cout << std::endl;
+
+	// Nurse tries to execute form : ERROR -> --> Grade of Nurse is too low
 	nurse.executeForm(*patientone);
 	nurse.executeForm(*patienttwo);
-	
 	std::cout << std::endl;
+	
+	// Doctor executes Form several times to check if the Robotomy is a success 50% of the time
 	doctor.executeForm(*patientone);
 	doctor.executeForm(*patienttwo);
 	doctor.executeForm(*patientone);
@@ -117,6 +191,13 @@ int main (void) {
 
 	delete patientone;
 	delete patienttwo;
+
+	AForm *patientthree = medicalIntern.makeForm("shrubberycreation", "hospital");
+	(void)patientthree;
+	}
+	catch (Intern::FormNotRecognised &e) {
+		std::cout << e.what();
+	}
 }
 
 }

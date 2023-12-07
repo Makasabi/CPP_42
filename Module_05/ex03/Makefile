@@ -20,6 +20,7 @@ SRCS			=	main.cpp \
 					ShrubberyCreationForm.cpp \
 					RobotomyRequestForm.cpp \
 					PresidentialPardonForm.cpp \
+					Intern.cpp \
 
 OBJS_PATH		=	./objs
 OBJS_NAMES		=	$(SRCS:.cpp=.o)
