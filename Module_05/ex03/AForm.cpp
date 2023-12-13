@@ -1,11 +1,6 @@
 #include "AForm.hpp"
 
-AForm::AForm() : _name("default"), _authograph(false), _gradeSign(100), _gradeExec(50) {
-
-	std::cout << _GREYER << _ITALIC << "AForm - Default constructor called" << _END << std::endl;
-}
-
-AForm::AForm(std::string const & name, unsigned char const sign, unsigned char const exec) : _name(name), _authograph(false), _gradeSign(sign), _gradeExec(exec){
+AForm::AForm(std::string const & name, unsigned char const sign, unsigned char const exec) : _name(name), _isSigned(false), _gradeSign(sign), _gradeExec(exec){
 
 	std::cout << _GREYER << _ITALIC << "AForm - Parametric constructor called" << _END << std::endl;
 	if (sign < 1 || exec < 1)
@@ -14,7 +9,7 @@ AForm::AForm(std::string const & name, unsigned char const sign, unsigned char c
 		throw AForm::GradeTooLowException();
 }
 
-AForm::AForm(AForm const & src) : _name(src.getName()), _authograph(false), _gradeSign(src.getGradeSign()), _gradeExec(src.getGradeExec()){
+AForm::AForm(AForm const & src) : _name(src.getName()), _isSigned(false), _gradeSign(src.getGradeSign()), _gradeExec(src.getGradeExec()){
 
 	std::cout << _GREYER << _ITALIC << "AForm - Copy constructor called" << _END << std::endl;
 }
@@ -37,7 +32,7 @@ std::string	AForm::getName(void) const {
 
 bool	AForm::getAuthograph(void) const {
 
-	return this->_authograph;
+	return this->_isSigned;
 }
 
 unsigned char	AForm::getGradeSign(void) const {
@@ -52,19 +47,20 @@ unsigned char	AForm::getGradeExec(void) const {
 
 void	AForm::beSigned(Bureaucrat const & officer) {
 
-	if (this->_authograph == true)
+	if (this->_isSigned == true)
 		throw AForm::AlreadySigned();
 	if (officer.getGrade() > this->_gradeSign)
 		throw Bureaucrat::GradeTooLowException();
-	this->_authograph = true;
+	this->_isSigned = true;
 }
 
 void	AForm::execute(Bureaucrat const & executor) const {
 
-	if (this->_authograph == false)
+	if (this->_isSigned == false)
 		throw AForm::NotSigned();
 	if (executor.getGrade() > this->_gradeExec)
 		throw AForm::GradeTooLowException();
+	doAction();
 }
 
 std::ostream & operator<<(std::ostream & o, AForm const & rhs) {

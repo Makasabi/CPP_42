@@ -20,8 +20,8 @@ Harl::~Harl ( void ) {
 
 void Harl::complain( std::string level ){
 
-	std::string searchStr [] = {"DEBUG", "INFO", "WARNING", "ERROR", ""};
-	void (Harl::*fPtr[4])(void) const = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	static std::string searchStr [] = {"DEBUG", "INFO", "WARNING", "ERROR", ""};
+	static void (Harl::*fPtr[4])(void) const = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
 	for (int i = 0; searchStr[i].size() != 0; i++)
 		if (level == searchStr[i])

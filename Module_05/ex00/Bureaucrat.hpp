@@ -9,7 +9,6 @@ class Bureaucrat {
 
 public:
 
-	Bureaucrat(void);
 	Bureaucrat(std::string const &, unsigned char const);
 	~Bureaucrat();
 	Bureaucrat(Bureaucrat const &);
@@ -23,21 +22,24 @@ public:
 	void setGrade(unsigned char const);
 
 	void incrementGrade(); //--
-	void incrementGrade(unsigned char const); // - n
+	void incrementGrade(unsigned char); // - n
 
 	void decrementGrade(); // ++
-	void decrementGrade(unsigned char const); // + n
+	void decrementGrade(unsigned char); // + n
 
 	class GradeTooHighException : public std::exception {
-		virtual const char* what() const throw() { return _RED "Grade too high!\n" _END;
-			}
+	public:
+		virtual const char* what() const throw() { return _RED "Grade too high!\n" _END;}
 	};
 
 	class GradeTooLowException : public std::exception {
+	public:
 		virtual const char* what() const throw() {return _RED "Grade too low!\n" _END;}
 	};
 
 private:
+
+	Bureaucrat();
 
 	std::string const	_name;
 	unsigned char		_grade;

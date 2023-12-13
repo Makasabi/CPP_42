@@ -45,19 +45,3 @@ void	RobotomyRequestForm::doAction(void) const {
 	else 
 		std::cout << _YELLOW << this->_target << "'s' robotomy " << _BOLD << "failed" << _END << std::endl;
 }
-
-void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
-
-	try {
-		AForm::execute(executor);
-		doAction();
-	}
-	catch (AForm::GradeTooLowException& ex) {
-
-		throw AForm::GradeTooLowException();
-	}
-	catch (AForm::NotSigned& ex) {
-
-		throw AForm::NotSigned();
-	}
-}

@@ -35,19 +35,3 @@ void	PresidentialPardonForm::doAction(void) const {
 
 	std::cout << _GOLD << _BOLD << _UNDER << this->_target << " has been pardonned by Zaphod Beeblebrox" << _END << std::endl;
 }
-
-void	PresidentialPardonForm::execute(Bureaucrat const & executor) const {
-
-	try {
-		AForm::execute(executor);
-		doAction();
-	}
-	catch (AForm::GradeTooLowException& ex) {
-
-		throw AForm::GradeTooLowException();
-	}
-	catch (AForm::NotSigned& ex) {
-
-		throw AForm::NotSigned();
-	}
-}

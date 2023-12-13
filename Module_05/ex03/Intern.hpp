@@ -8,15 +8,15 @@
 
 class Intern; 
 
-typedef	AForm*	(Intern::*t_fp)(const std::string&) const;
+typedef	AForm*	(Intern::*t_formFunction)(const std::string&) const;
 typedef	struct	s_maker	t_maker;
 
 /////// STRUCTURE ///////
 
 struct s_maker
 {
-	std::string	const	key;
-	t_fp const			fp;
+	std::string	const		key;
+	t_formFunction const	functionPointer;
 };
 
 /////// CLASS ///////

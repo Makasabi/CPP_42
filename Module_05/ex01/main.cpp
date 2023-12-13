@@ -2,48 +2,106 @@
 #include "Form.hpp"
 
 int main (void) {
+	{
+		try {
+			Bureaucrat	officerOne("Henri", 51);
+			Bureaucrat	officerTwo("Henriette", 140);
+			Form		adm("Adm42", 50, 100);
+			Form		piscine("Piscine42", 144, 50);
 
-{	
-	Bureaucrat	officerOne("Henri", 51);
-	Bureaucrat	officerTwo("Henriette", 140);
+			std::cout << officerOne;
+			std::cout << officerTwo;
+			std::cout << adm;
+			std::cout << piscine;
 
-	Form		adm("Adm42", 50, 100);
-	Form		piscine("Piscine42", 144, 50);
+// ======> Test : Sign form with a low grade
+			try {
+				officerOne.signForm(adm);
+			}
+			catch (std::exception &e) {
+				std::cout << officerOne.getName() << " could not sign form [" << adm.getName() << "] because: " << e.what();
+			}
+			std::cout << std::endl;
 
-	std::cout << officerOne;
-	std::cout << officerTwo;
-	std::cout << std::endl;
-	std::cout << adm;
-	std::cout << piscine;
+// ======> Test : Increment grade of officer
+			try {
+				officerOne.incrementGrade();
+			}
+			catch (Bureaucrat::GradeTooLowException &e) {
+				std::cout << officerOne.getName() << " could not sign form [" << adm.getName() << "] because: " << e.what();
+			}
 
-	officerOne.signForm(adm);
-	std::cout << std::endl;
-	officerOne.incrementGrade();
-	std::cout << std::endl;
-	officerOne.signForm(adm);
+// ======> Test : Sign form with a high enough grade
+			try {
+				officerOne.signForm(adm);
+			}
+			catch (std::exception &e) {
+				std::cout << officerOne.getName() << " could not sign form [" << adm.getName() << "] because: " << e.what();
+			}
+			std::cout << std::endl;
+			std::cout << adm;
 
-	std::cout << std::endl;
-	std::cout << adm;
+// ======> Test : Sign form that's already signed
+			try {
+				officerOne.signForm(adm);
+			}
+			catch (std::exception &e) {
+				std::cout << officerOne.getName() << " could not sign form [" << adm.getName() << "] because: " << e.what();
+			}
+			std::cout << std::endl;
 
+// ======> Test : Sign form with a high enough grade
+			try {
+				officerTwo.signForm(piscine);
+			}
+			catch (std::exception &e) {
+				std::cout << officerTwo.getName() << " could not sign form [" << adm.getName() << "] because: " << e.what();
+			}
+			std::cout << piscine;
 
-	officerTwo.signForm(adm);
-	std::cout << std::endl;
-	officerTwo.signForm(piscine);
+// ======> Test : Decrement grade of officer by too many levels
+			try {
+				officerTwo.decrementGrade(15);
+			}
+			catch (Bureaucrat::GradeTooLowException &e) {
+				std::cout << "Could not decrement grade of [" << officerTwo.getName() << "] because: " << e.what();
+			}
+			std::cout << std::endl;
 
-	std::cout << piscine;
+// ======> Test : Decrement grade of officer
+			try {
+				officerTwo.decrementGrade(5);
+			}
+			catch (Bureaucrat::GradeTooLowException &e) {
+				std::cout << "Could not decrement grade of [" << officerTwo.getName() << "] because: " << e.what();
+				}
+			std::cout << std::endl;
 
-	officerTwo.decrementGrade(5);
+// =====> Test : Copy a form and check if the copied form has corect grades but is unsigned.
+			Form piscine2(piscine);
+			std::cout << piscine2;
 
-	Form piscine2(piscine);
+// ======> Test : Sign form with a low grade
+			try {
+				officerTwo.signForm(piscine2);
+			}
+			catch (std::exception &e) {
+				std::cout << officerTwo.getName() << " could not sign form [" << piscine2.getName() << "] because: " << e.what();
+			}
 
-	std::cout << piscine2;
+// ======> Test : Sign form with a low grade
+			try {
+				officerOne.signForm(piscine2);
+			}
+			catch (std::exception &e) {
+				std::cout << officerOne.getName() << " could not sign form [" << piscine2.getName() << "] because: " << e.what();
+			}
 
-	officerTwo.signForm(piscine2);
-	officerOne.signForm(piscine2);
+			std::cout << piscine2;
+			}
 
-	std::cout << piscine2;
-}
-
-
-
+		catch (std::exception &e) {
+			std::cout << "error upon building object: " << e.what();
+		}
+	}
 }

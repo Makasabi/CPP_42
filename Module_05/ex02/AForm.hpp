@@ -13,8 +13,7 @@ class Bureaucrat;
 class AForm {
 
 public:
-	AForm();
-	AForm(std::string const &, unsigned char const, unsigned char const);
+	AForm(std::string const &, unsigned char, unsigned char);
 	AForm(AForm const &);
 	virtual ~AForm();
 
@@ -27,7 +26,6 @@ public:
 
 	void			beSigned(Bureaucrat const &);
 	virtual void	execute(Bureaucrat const & executor) const;
-	virtual void	doAction(void) const = 0;
 
 	class GradeTooHighException : public std::exception {
 		virtual const char* what() const throw() { return _RED "Grade too high!\n" _END;}
@@ -48,9 +46,15 @@ public:
 		virtual const char* what() const throw() {return _ORANGE "is not signed signed!\n" _END;}
 	};
 
+protected:
+	virtual void	doAction(void) const = 0;
+
 private:
+
+	AForm();
+
 	std::string const	_name;
-	bool				_authograph;
+	bool				_isSigned;
 	unsigned char const	_gradeSign;
 	unsigned char const	_gradeExec;
 

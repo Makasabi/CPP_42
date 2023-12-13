@@ -19,9 +19,9 @@ public:
 
 	std::string getTarget(void) const;
 
-	virtual void	execute(Bureaucrat const & executor) const;
-	virtual void	doAction(void) const;
+protected:
 
+	virtual void	doAction(void) const;
 
 private:
 	

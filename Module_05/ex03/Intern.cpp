@@ -52,7 +52,7 @@ AForm * Intern::makeForm(std::string const & formName, std::string const & targe
 	for (int i = 0; this->_search[i].key.size() != 0; i++)
 		if (formName == this->_search[i].key) {
 			std::cout << _CYAN << "Intern creates form: " << _BOLD << formName << _END << std::endl;
-			return ((this->*Intern::_search[i].fp)(target));
+			return ((this->*Intern::_search[i].functionPointer)(target));
 		}
 	throw FormNotRecognised();
 	return NULL;

@@ -5,16 +5,16 @@
 # include <iostream>
 # include "Bureaucrat.hpp"
 
-
 # define TRUE _FOREST_GREEN "YES" _END
 # define FALSE _RED "NO" _END
+
 class Bureaucrat;
 
 class Form {
 
 public:
 	Form();
-	Form(std::string const &, unsigned char const, unsigned char const);
+	Form(std::string const &, unsigned char, unsigned char);
 	Form(Form const &);
 	~Form();
 
@@ -28,27 +28,31 @@ public:
 	void			beSigned(Bureaucrat const &);
 
 	class GradeTooHighException : public std::exception {
+	public:
 		virtual const char* what() const throw() { return _RED "Grade too high!\n" _END;
 			}
 	};
 
 	class GradeTooLowException : public std::exception {
+	public:
 		virtual const char* what() const throw() {return _RED "Grade too low!\n" _END;}
 	};
 
 	class AlreadySigned : public std::exception {
+	public:
 		virtual const char* what() const throw() {return _ORANGE "Form is already signed!\n" _END;}
 	};
 
 private:
-	std::string const	_name;
-	bool				_authograph;
-	unsigned char const	_gradeSign;
-	unsigned char const	_gradeExec;
+	
+
+	std::string const		_name;
+	bool					_isSigned;
+	unsigned char const		_gradeSign;
+	unsigned char const		_gradeExec;
 
 };
 
 std::ostream & operator<<(std::ostream & o, Form const & rhs);
-
 
 #endif

@@ -12,7 +12,6 @@ class Bureaucrat {
 
 public:
 
-	Bureaucrat(void);
 	Bureaucrat(std::string const &, unsigned char const);
 	~Bureaucrat();
 	Bureaucrat(Bureaucrat const &);
@@ -46,6 +45,8 @@ public:
 	};
 
 private:
+
+	Bureaucrat(void);
 
 	std::string const	_name;
 	unsigned char		_grade;

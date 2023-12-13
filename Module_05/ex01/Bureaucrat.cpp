@@ -1,25 +1,9 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("Karen"), _grade(75) {
-
-	std::cout << _GREYER << _ITALIC << "Bureaucrat - Default constructor called" << _END << std::endl;
-};
-
 Bureaucrat::Bureaucrat(std::string const & name, unsigned char const grade) : _name(name) {
 
 	std::cout << _GREYER << _ITALIC << "Bureaucrat - Parametric constructor called" << _END << std::endl;
-	try {
-		Bureaucrat::setGrade(grade);
-	}
-	catch (std::exception& ex) {
-		std::cout << ex.what();
-		if (grade == 0)
-			_grade = 1;
-		else{
-			_grade = 150;
-		}
-		std::cout << _ORANGE << _name << "'s grade set at default value of " << static_cast<int>(_grade) << _END << std::endl;
-	}
+	Bureaucrat::setGrade(grade);
 }
 
 Bureaucrat::~Bureaucrat() {
@@ -63,60 +47,35 @@ void	Bureaucrat::setGrade(unsigned char const grade) {
 void Bureaucrat::incrementGrade() {
 
 	std::cout << _GREYER << _YELLOW << "Increment Grade of " << _name << " by 1 called" << _END << std::endl;
-	try {
-		this->setGrade(this->getGrade() - 1);
-	}
-	catch (std::exception& ex) {
-		std::cout << ex.what();
-	}
+	this->setGrade(this->getGrade() - 1);
 	std::cout << "❯❯❯ " << *this;
 }
 
-void Bureaucrat::incrementGrade(unsigned char const inc) {
+void Bureaucrat::incrementGrade(unsigned char inc) {
 
 	std::cout << _GREYER << _YELLOW << "Increment Grade of " << _name << " by " << static_cast<int>(inc) << " called" << _END << std::endl;
-	try {
-		this->setGrade(this->getGrade() - inc);
-	}
-	catch (std::exception& ex) {
-		std::cout << ex.what();
-	}
+	this->setGrade(this->getGrade() - inc);
 	std::cout << "❯❯❯ " << *this;
 }
 
 void Bureaucrat::decrementGrade() {
 
 	std::cout << _GREYER << _YELLOW << "Decrement Grade of " << _name << " by 1 called" << _END << std::endl;
-	try {
-		this->setGrade(this->getGrade() + 1);
-	}
-	catch (std::exception& ex) {
-		std::cout << ex.what();
-	}
+	this->setGrade(this->getGrade() + 1);
 	std::cout << "❯❯❯ " << *this;
 }
 
-void Bureaucrat::decrementGrade(unsigned char const dec) {
+void Bureaucrat::decrementGrade(unsigned char dec) {
 
 	std::cout << _GREYER << _YELLOW << "Decrement Grade of " << _name << " by " << static_cast<int>(dec) << " called" << _END << std::endl;
-	try {
-		this->setGrade(this->getGrade() + dec);
-	}
-	catch (std::exception& ex) {
-		std::cout << ex.what();
-	}
+	this->setGrade(this->getGrade() + dec);
 	std::cout << "❯❯❯ " << *this;
 }
 
-void Bureaucrat::signForm(Form & paper) {
+void Bureaucrat::signForm(Form & form) {
 
-	try {
-		paper.beSigned(*this);
-		std::cout << _FOREST_GREEN << this->_name << " signed " << paper.getName() << _END << std::endl;
-	}
-	catch (std::exception& ex) {
-		std::cout << this->_name << " couldn't sign " << paper.getName() << " because " << ex.what();
-	}
+	form.beSigned(*this);
+	std::cout << _FOREST_GREEN << this->_name << " signed " << form.getName() << _END << std::endl;
 }
 
 

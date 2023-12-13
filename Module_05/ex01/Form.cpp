@@ -1,11 +1,7 @@
 #include "Form.hpp"
 
-Form::Form() : _name("default"), _authograph(false), _gradeSign(100), _gradeExec(50) {
 
-	std::cout << _GREYER << _ITALIC << "Form - Default constructor called" << _END << std::endl;
-}
-
-Form::Form(std::string const & name, unsigned char const sign, unsigned char const exec) : _name(name), _authograph(false), _gradeSign(sign), _gradeExec(exec){
+Form::Form(std::string const & name, unsigned char const sign, unsigned char const exec) : _name(name), _isSigned(false), _gradeSign(sign), _gradeExec(exec){
 
 	std::cout << _GREYER << _ITALIC << "Form - Parametric constructor called" << _END << std::endl;
 	if (sign < 1 || exec < 1)
@@ -14,7 +10,7 @@ Form::Form(std::string const & name, unsigned char const sign, unsigned char con
 		throw Form::GradeTooLowException();
 }
 
-Form::Form(Form const & src) : _name(src.getName()), _authograph(false), _gradeSign(src.getGradeSign()), _gradeExec(src.getGradeExec()){
+Form::Form(Form const & src) : _name(src.getName()), _isSigned(false), _gradeSign(src.getGradeSign()), _gradeExec(src.getGradeExec()){
 
 	std::cout << _GREYER << _ITALIC << "Form - Copy constructor called" << _END << std::endl;
 }
@@ -37,7 +33,7 @@ std::string	Form::getName(void) const {
 
 bool	Form::getAuthograph(void) const {
 
-	return this->_authograph;
+	return this->_isSigned;
 }
 
 unsigned char	Form::getGradeSign(void) const {
@@ -52,11 +48,11 @@ unsigned char	Form::getGradeExec(void) const {
 
 void	Form::beSigned(Bureaucrat const & officer) {
 
-	if (this->_authograph == true)
+	if (this->_isSigned == true)
 		throw Form::AlreadySigned();
 	if (officer.getGrade() > this->_gradeSign)
 		throw Bureaucrat::GradeTooLowException();
-	this->_authograph = true;
+	this->_isSigned = true;
 }
 
 std::ostream & operator<<(std::ostream & o, Form const & rhs) {

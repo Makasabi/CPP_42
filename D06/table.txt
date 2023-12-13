@@ -1,0 +1,47 @@
+--------------------+-----------+-----------+-----------+-----------+---------------
+		Cast		|	Conv.	|	Reint.	|	Upcast	| Downcast	|	Type qual.	
+--------------------+-----------+-----------+-----------+-----------+---------------
+Implicit			|	Yes		|			|	Yes		|			|				
+Static_cast			|	Yes		|			|	Yes		|	Yes		|				
+Dynamic_cast		|			|			|	Yes		|	Yes		|				// Appens AT RUN TIME
+Const_cast			|			|			|			|			|	Yes			
+Reinterpret_cast	|			|	Yes		|	Yes		|	Yes		|				
+--------------------+-----------+-----------+-----------+-----------+---------------
+Legacy C cast		|	Yes		|	Yes		|	Yes		|	Yes		|	Yes			
+--------------------+-----------+-----------+-----------+-----------+---------------
+
+
+--------------------+-------------------+-----------------------+-------------------
+		Cast		|	Semantic check	|	Reliable and run	|	Tested at run	
+--------------------+-------------------+-----------------------+-------------------
+Implicit			|		Yes			|		Yes				|					
+Static_cast			|		Yes			|						|					
+Dynamic_cast		|		Yes			|		Yes				|		Yes			
+Const_cast			|					|						|					
+Reinterpret_cast	|					|						|					
+--------------------+-------------------+-----------------------+-------------------
+Legacy C cast		|					|						|					
+--------------------+-------------------+-----------------------+-------------------
+
+Scalar type: 
+A type that holds a single value of a defined range. 
+Scalars include arithmetic types (integral or floating-point values), enumeration type members, pointer types, pointer-to-member types, and std::nullptr_t.
+Fundamental types are typically scalar types.
+
+NaN / -Nan -> <cmath> <ctgmath>
+Not a number (float, long or double )
+The NaN values are used to identify undefined or non-representable values for floating-point elements, such as the square root of negative numbers or the result of 0/0.
+https://cplusplus.com/reference/cmath/nan-function/
+
+Nanf / -Nanf -> <cmath> <ctgmath>
+
+inf / -inf
+int main(){
+    // Assigning the value of Infinity to Inf variable.
+    float Inf = numeric_limits<float>::infinity();  
+    // Converting the value to negative and assigning it to negative_Inf.
+    float negative_Inf= Inf*-1;}
+
+inff / -inff
+HUGE_VAL -  <cmath>	
+https://en.cppreference.com/w/cpp/types/numeric_limits/infinity

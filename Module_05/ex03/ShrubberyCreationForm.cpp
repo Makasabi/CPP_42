@@ -68,20 +68,4 @@ void	ShrubberyCreationForm::doAction(void) const {
 	outfile << "          \\_____/" << std::endl;
 
 	outfile.close();
-} 	
-
-void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
-
-	try {
-		AForm::execute(executor);
-		doAction();
-	}
-	catch (AForm::GradeTooLowException& ex) {
-
-		throw AForm::GradeTooLowException();
-	}
-	catch (AForm::NotSigned& ex) {
-
-		throw AForm::NotSigned();
-	}
 }
