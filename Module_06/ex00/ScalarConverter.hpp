@@ -31,6 +31,10 @@ public:
 
 private:
 
+	ScalarConverter();
+	ScalarConverter(ScalarConverter const &);
+	ScalarConverter operator=(ScalarConverter const &);
+
 	static e_type findType(std::string);
 	static e_type whatNumber(std::string arg);
 	static void printChar(std::string arg);
@@ -39,10 +43,6 @@ private:
 	static void printDouble(std::string arg);
 	static void printInf(std::string arg);
 	static void printNan(void);
-
-	ScalarConverter();
-	ScalarConverter(ScalarConverter const &);
-	ScalarConverter operator=(ScalarConverter const &);
 
 };
 

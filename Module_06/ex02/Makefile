@@ -9,7 +9,7 @@ _ORANGE			=	\033[38;5;208m
 
 # MAKEFILE #
 
-NAME 			=	serialize
+NAME 			=	typeID
 
 CC				=	c++
 CFLAGS			=	-Wall -Wextra -Werror -std=c++98 -MMD -g

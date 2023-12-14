@@ -96,7 +96,11 @@ void ScalarConverter::printDouble(std::string arg) {
 	else
 		std::cout << "Int:\t" << static_cast<int>(d) << std::endl;
 	if (arg.at(arg.size()-1) == '0' && arg.at(arg.size()-2) == '.') {
-		std::cout<< "Float:\t" << static_cast<float>(d) << ".0f" << std::endl;
+		if (static_cast<float>(d) == std::numeric_limits<float>::infinity()
+		|| static_cast<float>(d) == std::numeric_limits<float>::infinity() * -1)
+			std::cout<< "Float:\t" << static_cast<float>(d) << "f" << std::endl;
+		else
+			std::cout<< "Float:\t" << static_cast<float>(d) << ".0f" << std::endl;
 		std::cout<< "Double:\t" << d << ".0" << std::endl;
 	}
 	else {
