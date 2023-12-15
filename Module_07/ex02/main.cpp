@@ -34,6 +34,8 @@ int main (void) {
 	for (size_t i = 0; i < ints.size(); i++)
 		ints[i] = rand();
 	
+	
+
 	std::cout << ints;
 
 	Array<int> doppleganger(ints);

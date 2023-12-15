@@ -4,12 +4,19 @@
 # include <iostream>
 # include "colors.hpp"
 
-template<typename T>
-void	iter(T * array, size_t const len, void (*f_pointer)(T &)) {
+template<typename T, typename U>
+void	iter(T * array, size_t const len, void (*f_pointer)(U &)) {
 
 	for (size_t i = 0; i < len; i++) {
 		f_pointer(array[i]);
+		
 	}
+}
+
+template<typename T>
+void	increment(T &i) {
+
+	i++;
 }
 
 template<typename T>
