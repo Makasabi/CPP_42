@@ -37,7 +37,7 @@ int main()
 	container.push_back(roll());
 	const int* pAddressOfOriginlItemZero = &(* container.begin());
 
-	std::chrono::duration<double> durInsertTime(0);
+	std::chrono::duration<dD08/std_array.cpp D08/std_deque.cpp D08/std_list.cpp D08/std_map.cpp D08/std_set.cpp D08/std_unordered_map.cpp D08/std_unordered_set.cpp D08/std_vector.cppouble> durInsertTime(0);
 
 	do
 	{

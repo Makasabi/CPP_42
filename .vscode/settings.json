@@ -51,6 +51,21 @@
 		"iomanip": "cpp",
 		"sstream": "cpp",
 		"fstream": "cpp",
-		"cstring": "cpp"
-	}
+		"cstring": "cpp",
+		"chrono": "cpp",
+		"list": "cpp",
+		"map": "cpp",
+		"set": "cpp",
+		"unordered_set": "cpp",
+		"ratio": "cpp"
+	},
+	"C_Cpp.default.includePath": [
+		"${workspaceFolder}/**",
+		"/usr/include/c++/11",
+		"/usr/include/c++/11/**",
+		"/usr/local/include",
+		"/usr/include"
+	],
+	"C_Cpp.errorSquiggles": "disabled",
+	
 }
