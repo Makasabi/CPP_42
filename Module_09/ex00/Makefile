@@ -15,7 +15,7 @@ CC				=	c++
 CFLAGS			=	-Wall -Wextra -Werror -std=c++98 -MMD -g
 
 SRCS			=	main.cpp \
-					BitcoinExchange.cpp
+					BitcoinExchange.cpp 
 					
 OBJS_PATH		=	./objs
 OBJS_NAMES		=	$(SRCS:.cpp=.o)
