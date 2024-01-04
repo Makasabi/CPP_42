@@ -1,3 +1,16 @@
+#include "BitcoinExchange.hpp"
+#include <iostream>
+#include <string>
+
+int main(int argc, char **argv) {
+
+	if (argc != 2){
+		std::cout << _RED << "Invalid argument count" << _END << std::endl;
+		return 1;
+	}
+	 
+}
+
 /*
 1. 	Check for arg numbers
 2.	Parse data base in container to be defined : Multimap ? 
