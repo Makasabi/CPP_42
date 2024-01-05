@@ -51,7 +51,7 @@ unsigned int Span::shortestSpan(void)
 	std::sort(copy.begin(), copy.end());
 	std::vector<int>::iterator i = copy.begin();
 	unsigned int shortest = *(i + 1) - *i;
-	for (++i; i < copy.end(); i++)
+	for (++i; *i != copy.back(); i++)
 		shortest = std::min(shortest, static_cast<unsigned int>(*(i + 1) - *i));
 	return shortest;
 }

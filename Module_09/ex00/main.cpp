@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 		return 1;
 	}
 	try {
-		BitcoinExchange		btcEcxge(argv[1]);
+		BitcoinExchange		btcEcxge(static_cast<std::string>(argv[1]));
 	}
 	catch (std::exception &e) 
 	{
@@ -41,5 +41,5 @@ int main(int argc, char **argv)
 
 
 ----> Interrupt program if input file is innaccessible or empty
-
+ddddddfffdddff
 */

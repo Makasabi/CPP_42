@@ -4,6 +4,8 @@
 # include <map>
 # include <string>
 # include <fstream>
+# include <sstream>
+# include <iostream>
 # include <exception>
 
 # include "colors.hpp"
@@ -11,7 +13,7 @@
 class BitcoinExchange {
 
 public:
-	BitcoinExchange(char *filename);
+	BitcoinExchange(std::string filename);
 	~BitcoinExchange(void);
 	BitcoinExchange(BitcoinExchange const & src);
 
@@ -27,6 +29,8 @@ public:
 
 	// // trows exception if value is incorrect (out of range, negative...)
 	// void	valueChecker(T & value);
+
+	void	fillDataBase(void);
 
 	class InvalidFileException : public std::exception {
 	public :
@@ -48,9 +52,14 @@ public:
 		virtual const char * what() const throw() {return _RED "Value is out of bounds [0 - 1000]" _END;}
 	};
 
+	class MissingValueException : public std::exception {
+	public :
+		virtual const char * what() const throw() {return _RED "Missing value" _END;}
+	};
+
 private:
 	std::map <std::string, float>		_btc;
-	std::ifstream						_input;
+	std::string							_input;
 
 	BitcoinExchange(void);
 };

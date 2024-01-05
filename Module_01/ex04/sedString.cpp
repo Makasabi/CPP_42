@@ -35,6 +35,7 @@ int			sedString(std::string filename, std::string s1, std::string s2) {
 
 	buffer << infile.rdbuf();
 	line = buffer.str();
+	std::cout << line << std::endl;
 	outfile << strReplace(line, s1, s2);
 	infile.close();
 	outfile.close();
