@@ -22,9 +22,11 @@ public:
 	/********************************* METHODS *********************************/
 
 	void	fillDataBase(void);
+
 	void	bitcoinExchanger(void);
 
 	bool	checkFirstLine(const std::string &line);
+	
 	void	dateChecker(const std::string &date);
 
 	template<typename T>
@@ -37,6 +39,9 @@ public:
 
 	class InvalidDateException : public std::exception {
 	public : virtual const char * what() const throw() {return _RED "Invalid date format" _END;} };
+
+	class DateNotReferencedException : public std::exception {
+	public : virtual const char * what() const throw() {return _RED "No rate for this date" _END;} };
 
 	class NegativeValueException : public std::exception {
 	public : virtual const char * what() const throw() {return _RED "Negative value" _END;} };

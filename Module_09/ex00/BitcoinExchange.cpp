@@ -17,7 +17,7 @@ BitcoinExchange::~BitcoinExchange(void) {
 void	BitcoinExchange::fillDataBase(void){
 
 	std::ifstream			database("data.csv");
-	if(((database.rdstate() | std::ifstream::goodbit) != 0) || database.peek() == EOF)
+	if(((database.rdstate() | std::ifstream::goodbit) != 0) || database.peek() == )
 		throw InvalidFileException();
 
 	std::string				line;
@@ -120,6 +120,8 @@ void	BitcoinExchange::bitcoinExchanger(void) {
 				buff >> value;
 				valueChecker(value);
 				std::map<std::string, float>::iterator i = this->_btc.upper_bound(date);
+				if (i == this->_btc.begin())
+					throw BitcoinExchange::DateNotReferencedException();
 				--i;
 				std::cout << value << " = " << (i->second * value) << std::endl;
 			}
