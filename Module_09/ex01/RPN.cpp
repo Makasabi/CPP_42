@@ -63,7 +63,7 @@ int RNP::computer(void) {
 			this->_rpn.push(fp[i](left, right));
 		}
 		else 
-			this->_rpn.push(tmp[0] - '0');
+			this->_rpn.push(static_cast<int>(tmp[0] - '0'));
 	}
 
 	if (this->_rpn.size() != 1)
