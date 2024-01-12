@@ -9,13 +9,15 @@ _ORANGE			=	\033[38;5;208m
 
 # MAKEFILE #
 
-NAME 			=	RPN
+NAME 			=	PmergeMe
 
 CC				=	c++
 CFLAGS			=	-Wall -Wextra -Werror -std=c++98 -MMD -g
 
 SRCS			=	main.cpp \
-					RPN.cpp 
+					PmergeMe.cpp 
+
+INC				=	PmergeMe.hpp
 
 OBJS_PATH		=	./objs
 OBJS_NAMES		=	$(SRCS:.cpp=.o)
@@ -27,14 +29,14 @@ all: $(NAME)
 
 $(OBJS_PATH)/%.o: %.cpp
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@ 
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC)
 	@echo "$(_ORANGE)Compiling:" $@
 
 $(OBJS_PATH) :
 	@mkdir -p $(OBJS_PATH)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) 
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(_YELLOW)Usage : ./$(NAME)$(_GREYER)$(_END)"
 
 clean:
