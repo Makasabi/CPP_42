@@ -24,12 +24,16 @@ public:
 	template <typename T>
 	void	printSequence(const T& container) const;
 
-	template <typename T, template<typename, class> class Container>
-	Container<T, std::allocator<T> >	PmergeMe::sort();
+	// fonction sortVector
+	template <typename T, typename U>
+	std::vector<T>	& sortVector(std::vector<U> & container);
 
-	std::vector<int>			getNuVector(void) const;
-	std::vector<std::string>	getInput(void) const;
-	std::list<int>				getNuList(void) const;
+	// fonction sortList
+
+	const std::vector<int> &			getNuVector(void) const;
+	std::vector<int>& getNuVector();
+	const std::vector<std::string> &	getInput(void) const;
+	const std::list<int> &			getNuList(void) const;
 
 	class InvalidInputException : public std::exception {
 		public: virtual const char * what() const throw() {return _MAGENTA "Invalid Input" _END;} };

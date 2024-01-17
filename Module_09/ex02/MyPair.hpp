@@ -10,7 +10,7 @@ public:
 	MyPair(MyPair const & src);
 	MyPair(T *first, T *second);
 
-	MyPair & operator=(MyPair const & src);
+	MyPair<T> &operator=(MyPair const & src);
 
 	bool operator<(MyPair const & rhs) const;
 	bool operator>(MyPair const & rhs) const;
@@ -19,8 +19,8 @@ public:
 	bool operator==(MyPair const & rhs) const;
 	bool operator!=(MyPair const & rhs) const;
 
-	const T *getFirst(void) const;
-	const T *getSecond(void) const;
+	T *getFirst(void) const;
+	T *getSecond(void) const;
 
 private:
 
@@ -28,7 +28,7 @@ private:
 
 	T	*first;
 	T	*second;
-}
+};
 
 template<typename T>
 std::ostream & operator << (std::ostream & o, MyPair<T> const & rhs);

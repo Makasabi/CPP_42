@@ -15,6 +15,7 @@ template <typename T>
 MyPair<T>::~MyPair() {}
 
 // copy operator overload
+template <typename T>
 MyPair<T> &MyPair<T>::operator=(MyPair<T> const & src)
 {
 	this->first = src.first;
@@ -43,14 +44,14 @@ bool MyPair<T>::operator!=(MyPair<T> const & rhs) const { return *this->second !
 
 // getters
 template <typename T>
-const T *MyPair<T>::getFirst(void) const { return *this->first; }
+T *MyPair<T>::getFirst(void) const { return this->first; }
 
 template <typename T>
-const T *MyPair<T>::getSecond(void) const { return *this->second; }
+T *MyPair<T>::getSecond(void) const { return this->second; }
 
 template <typename T>
 std::ostream & operator << (std::ostream & out, MyPair<T> const & rhs)
 {
-	out << "[ " << *rhs.first << " ; " << *rhs.second << " ]";
+	out << "[ " << *rhs.getFirst() << " ; " << *rhs.getSecond() << " ]";
 	return out;
 }

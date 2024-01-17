@@ -31,23 +31,22 @@ bool PmergeMe::trueDigit(std::string input) {
 	return true;
 }
 
-std::vector<int>	PmergeMe::getNuVector(void) const {
+const std::vector<int> &	PmergeMe::getNuVector(void) const {
 	return this->_nuVector;
 }
 
-std::vector<std::string>	PmergeMe::getInput(void) const {
+std::vector<int> &	PmergeMe::getNuVector(void) {
+	return this->_nuVector;
+}
+
+const std::vector<std::string> &	PmergeMe::getInput(void) const {
 	return this->_input;
 }
 
-std::list<int>	PmergeMe::getNuList(void) const {
+const std::list<int> &	PmergeMe::getNuList(void) const {
 	return this->_nuList;
 }
 
-// void PmergeMe::sortPairs(std::vector<>) {
 
-
-
-// 	std::vector<std::pair>
-// }
 
 PmergeMe::~PmergeMe(void) {}

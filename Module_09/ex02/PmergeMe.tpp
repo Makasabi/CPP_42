@@ -11,6 +11,37 @@ void	PmergeMe::printSequence(const T& container) const {
 	std::cout << std::endl;
 }
 
+
+template <typename T, typename U>
+std::vector<T>	&PmergeMe::sortVector(std::vector<U> & container) {
+
+	std::vector<MyPair<int> >		pairs;
+
+	if (container.size() == 1)
+		return container;
+
+	if (container.size() == 2) {
+		if (container[0] > container[1]) {
+			std::swap(container[0], container[1]);
+		}
+		return container;
+	}
+
+	for (size_t i = 0; i < container.size() - 1; i += 2){
+		if (container[i] > container[i + 1]) {
+			std::swap(container[i], container[i + 1]);
+		}
+		pairs.push_back(MyPair<int>(&container[i], &container[i + 1]));
+	}
+
+	for (std::vector<MyPair<int> >::iterator i = pairs.begin(); i!= pairs.end(); ++i)
+		std::cout << *i << std::endl;
+
+
+	return container;
+}
+
+
 // template<typename Type>
 // std::vector<Type>	PmergeMe::sort(std::vector<Type> container) {
 
