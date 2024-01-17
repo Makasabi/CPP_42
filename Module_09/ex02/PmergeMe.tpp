@@ -11,30 +11,31 @@ void	PmergeMe::printSequence(const T& container) const {
 	std::cout << std::endl;
 }
 
-template<typename Type>
-std::vector<Type>	PmergeMe::sort(std::vector<Type> container) {
-	
+// template<typename Type>
+// std::vector<Type>	PmergeMe::sort(std::vector<Type> container) {
+
 	// if (container.size() >= this->_nuVector.size())
 	// 	return(container);
-	
-	std::vector<std::pair<int, int> > pContainer;
-	
-	for (size_t i = 0; i < container.size() - 1; i += 2){
-		pContainer.push_back(std::make_pair(container[i], container[i + 1]));
-	}
 
-	for (size_t i = 0; i < pContainer.size(); ++i) {
-		if (pContainer[i].first < pContainer[i].second)
-			std::swap(pContainer[i].first, pContainer[i].second);
-	}
+// 	std::vector<std::pair<int, int> > pContainer;
 
-	for (std::vector<std::pair<int, int> >::iterator i = pContainer.begin(); i != pContainer.end(); ++i)
-		std::cout << i->first << ", " << i->second << std::endl;
+// 	for (size_t i = 0; i < container.size() - 1; i += 2){
+// 		pContainer.push_back(std::make_pair(container[i], container[i + 1]));
+// 	}
 
-	sort(pContainer);
+// 	for (size_t i = 0; i <= pContainer.size(); ++i) {
+// 		if (PmergeMe::bigger(pContainer[i].first, pContainer[i].second))
+// 			std::swap(pContainer[i].first, pContainer[i].second);
+// 	}
 
-	return container;
-}
+// 	for (std::vector<std::pair<int, int> >::iterator i = pContainer.begin(); i != pContainer.end(); ++i)
+// 		std::cout << i->first << ", " << i->second << std::endl;
+
+// 	sort(pContainer);
+
+// 	return container;
+// }
+
 
 
 #endif

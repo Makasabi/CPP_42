@@ -17,7 +17,8 @@ CFLAGS			=	-Wall -Wextra -Werror -std=c++98 -MMD -g
 SRCS			=	main.cpp \
 					PmergeMe.cpp 
 
-INC				=	PmergeMe.hpp
+# INC				=	PmergeMe.hpp \
+# 					PmergeMe.tpp
 
 OBJS_PATH		=	./objs
 OBJS_NAMES		=	$(SRCS:.cpp=.o)
@@ -29,7 +30,7 @@ all: $(NAME)
 
 $(OBJS_PATH)/%.o: %.cpp
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC)
+	@$(CC) $(CFLAGS) -c $< -o $@ 
 	@echo "$(_ORANGE)Compiling:" $@
 
 $(OBJS_PATH) :

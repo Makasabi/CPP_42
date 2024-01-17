@@ -9,7 +9,6 @@ int main (int argc, char **argv) {
 	try {
 		PmergeMe	algo(argv);
 		algo.sort(algo.getNuVector());
-		
 	}
 	catch (std::exception &e) {
 		std::cout << _MAGENTA "Error: " << e.what() << _END << std::endl;

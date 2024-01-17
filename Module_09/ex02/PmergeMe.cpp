@@ -1,9 +1,9 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(char **argv) : _inc(2) {
+PmergeMe::PmergeMe(char **argv) {
 
-	int				input;
-	int				i = 1;
+	int		input;
+	int		i = 1;
 
 	while(argv[i])
 	{
@@ -47,7 +47,7 @@ std::list<int>	PmergeMe::getNuList(void) const {
 
 
 
-// 	std::vector<std::pair> 
+// 	std::vector<std::pair>
 // }
 
 PmergeMe::~PmergeMe(void) {}

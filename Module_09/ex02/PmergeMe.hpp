@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
 # include <iostream>
 # include <string>
@@ -9,23 +10,22 @@
 # include <utility>
 
 # include "colors.hpp"
+# include "MyPair.hpp"
 
 class PmergeMe {
 
-public: 
+public:
 
 	PmergeMe(char **argv);
 	~PmergeMe(void);
 
 	static bool trueDigit(std::string input);
 
-template<typename T>
-void	printSequence(const T& container) const;
+	template <typename T>
+	void	printSequence(const T& container) const;
 
-template<typename Type>
-std::vector<Type>	sort(std::vector<Type> container);
-
-	// void sortlist(void);
+	template <typename T, template<typename, class> class Container>
+	Container<T, std::allocator<T> >	PmergeMe::sort();
 
 	std::vector<int>			getNuVector(void) const;
 	std::vector<std::string>	getInput(void) const;
@@ -41,9 +41,6 @@ private:
 	std::vector<int>			_nuVector;
 	std::list<int>				_nuList;
 
-	size_t						_inc;
-	bool						_odd;
-
 	PmergeMe(void);
 	PmergeMe(PmergeMe const & src);
 	PmergeMe & operator=(PmergeMe const & src);
@@ -52,4 +49,6 @@ private:
 };
 
 
-#include "PmergeMe.tpp"
+# include "PmergeMe.tpp"
+
+#endif
