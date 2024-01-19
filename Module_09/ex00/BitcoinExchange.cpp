@@ -17,7 +17,7 @@ BitcoinExchange::~BitcoinExchange(void) {
 void	BitcoinExchange::fillDataBase(void){
 
 	std::ifstream			database("data.csv");
-	if(((database.rdstate() | std::ifstream::goodbit) != 0) || database.peek() == )
+	if(((database.rdstate() | std::ifstream::goodbit) != 0) || database.peek() == EOF)
 		throw InvalidFileException();
 
 	std::string				line;
@@ -57,14 +57,15 @@ bool	BitcoinExchange::checkFirstLine(const std::string &line) {
 void	BitcoinExchange::dateChecker(const std::string &date){
 
 	std::istringstream	ss(date);
-	char				dash;
+	char				dash[2];
 	int					year, month, day;
 	int 				daysInMonths[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 	if (date.size() == 0)
 		throw BitcoinExchange::MissingValueException();
-	ss >> year >> dash >> month >> dash >> day;
-
+	ss >> year >> dash[0] >> month >> dash[1] >> day;
+	if (dash[0] != '-' || dash[1] != '-')
+		throw BitcoinExchange::InvalidDateException();
 	if ((year%4 == 0 && year%100 != 0) || year %400 == 0)
 		daysInMonths[2] = 29;
 	if (year < 2009 || year > 2024 || month < 1 || month > 12 || day < 1 || day > 31)

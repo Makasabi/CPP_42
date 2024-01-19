@@ -2,56 +2,39 @@
 # define PMERGEME_HPP
 
 # include <iostream>
+# include <vector>
+# include <list>
+# include <deque>
+# include <exception>
 # include <string>
 # include <sstream>
-# include <list>
-# include <vector>
-# include <exception>
 # include <utility>
 
-# include "colors.hpp"
 # include "MyPair.hpp"
+# include "colors.hpp"
 
+template <typename T, template <typename, class> class container>
 class PmergeMe {
 
 public:
 
-	PmergeMe(char **argv);
-	~PmergeMe(void);
+	~PmergeMe();
+	PmergeMe(PmergeMe const &src);
+	PmergeMe(const container<T, std::allocator<T> > &sequence);
+	
+	PmergeMe & operator=(PmergeMe const &src);
 
-	static bool trueDigit(std::string input);
+	void SequencePrinter(std::string state);
 
-	template <typename T>
-	void	printSequence(const T& container) const;
-
-	// fonction sortVector
-	template <typename T, typename U>
-	std::vector<T>	& sortVector(std::vector<U> & container);
-
-	// fonction sortList
-
-	const std::vector<int> &			getNuVector(void) const;
-	std::vector<int>& getNuVector();
-	const std::vector<std::string> &	getInput(void) const;
-	const std::list<int> &			getNuList(void) const;
-
-	class InvalidInputException : public std::exception {
-		public: virtual const char * what() const throw() {return _MAGENTA "Invalid Input" _END;} };
+	container<T, std::allocator<T> >	fordJohnson();
+	// container<T, std::allocator<T> >	pairSorting(void);
+	// void 								pairSwaping(void);
 
 private:
-
-	std::vector<std::string>	_input;
-
-	std::vector<int>			_nuVector;
-	std::list<int>				_nuList;
-
-	PmergeMe(void);
-	PmergeMe(PmergeMe const & src);
-	PmergeMe & operator=(PmergeMe const & src);
-
-
+	container<T, std::allocator<T> >		_sequence;
+	unsigned int 							_it;
+	PmergeMe();
 };
-
 
 # include "PmergeMe.tpp"
 

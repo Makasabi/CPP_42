@@ -1,5 +1,4 @@
 #include "MyPair.hpp"
-#include "colors.hpp"
 
 // no default constructor as it is private
 
@@ -53,6 +52,6 @@ T MyPair<T>::getSecond(void) const { return this->second; }
 template <typename T>
 std::ostream & operator << (std::ostream & out, MyPair<T> const & rhs)
 {
-	out << "[" << _GREYER << rhs.getFirst() << _END << " < " << rhs.getSecond() << "]";
+	out << "[ " << rhs.getFirst() << " ; " << rhs.getSecond() << " ]";
 	return out;
 }

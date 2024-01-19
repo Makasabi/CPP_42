@@ -26,6 +26,9 @@ public:
 	class InvalidInputException : public std::exception {
 		public: virtual const char * what() const throw() {return _MAGENTA "Invalid Input" _END;} };
 
+	class ImpossibleDivisionException : public std::exception {
+		public: virtual const char * what() const throw() {return _MAGENTA "Division by 0 impossible" _END;} };
+
 private:
 
 	std::stack<int>	_rpn;

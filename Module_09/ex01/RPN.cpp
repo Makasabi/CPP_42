@@ -26,6 +26,8 @@ int	RNP::multiply(int left, int right) {
 }
 
 int	RNP::divide(int left, int right) {
+	if (right == 0)
+		throw ImpossibleDivisionException();
 	return(left / right);
 }
 
