@@ -23,7 +23,7 @@ std::vector<int> & sortingPairs(std::vector<int> & test, int it)
 {
 	if (test.size()/it == 0)
 		return test;
-	
+
 	std::cout << "\nit = " << it << ";\nUnsorted pairs:\t";
 	for (size_t i = 0; i < test.size(); i++)
 	{
@@ -56,18 +56,26 @@ std::vector<int> & sortingPairs(std::vector<int> & test, int it)
 	std::vector<int>	pend;
 
 	std::cout << "\nit = " << it << std::endl;
-	for (std::vector<int>::iterator i = test.begin(); i < test.end(); i += it)
+	// for (std::vector<int>::iterator i = test.begin(); i < test.end(); i += it)
+	// {
+	// 	for ()
+	// }
+	std::cout << "\nit = " << it << ";\nUnsorted pairs:\t";
+	for (size_t i = 0; i < test.size(); i++)
 	{
-		for ()
+		if (i % it == 0)
+			std::cout << "| ";
+		std::cout << test[i] << " " ;
 	}
-
+	std::cout << std::endl;
 	return test;
 }
 
 int main (void) {
 
-	std::vector<int>	test{8, 2, 9, 6, 5, 7, 1, 4, 3, 0};
-	
+	int vec[] = {8, 2, 9, 6, 5, 7, 1, 4, 3, 0};
+	std::vector<int>	test(vec, vec+10);
+
 	std::vector<int>	res = sortingPairs(test, 2);
 
 }
