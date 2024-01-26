@@ -1,41 +1,68 @@
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
-# include <iostream>
-# include <vector>
 # include <list>
-# include <deque>
-# include <exception>
-# include <string>
+# include <vector>
 # include <sstream>
-# include <utility>
+# include <string>
+# include <iostream>
+# include <algorithm>
 
-# include "MyPair.hpp"
-# include "colors.hpp"
+#include "colors.hpp"
 
-template <typename T, template <typename, class> class container>
 class PmergeMe {
 
 public:
-
+	PmergeMe(char **argv);
 	~PmergeMe();
-	PmergeMe(PmergeMe const &src);
-	PmergeMe(const container<T, std::allocator<T> > &sequence);
-	
-	PmergeMe & operator=(PmergeMe const &src);
 
-	void SequencePrinter(std::string state);
+	bool			trueDigit(std::string input);
+	unsigned int	JacobsthalNumber(int n);
+	bool			isSorted(void);
 
-	container<T, std::allocator<T> >	fordJohnson();
-	// container<T, std::allocator<T> >	pairSorting(void);
-	// void 								pairSwaping(void);
+	/***************************/
+	/*       SORT VECTOR       */
+	/***************************/
+
+	typedef std::vector<int>::iterator viterator;
+
+	void VecSorter(int it);
+
+	void vecSwaper(std::vector<int>::iterator bigger, std::vector<int>::iterator smaller, int size);
+	void vecPrinter(std::vector<int> toPrint, std::string comment, int it);
+	void vecBinarySearch(int half, std::vector<int> &chain, std::vector<int>::iterator from, std::vector<int>::iterator to);
+
+
+	std::vector<int> getVec(void);
+
+
+
+	/***************************/
+	/*        SORT LIST        */
+	/***************************/
+
+	// std::list<int> & LisSorter(std::list<int> & sequence);
+	// void liSwaper(std::list<int>::iterator bigger, std::list<int>::iterator smaller, int size);
+
+	/***************************/
+	/*        EXCEPTION        */
+	/***************************/
+
+	class InvalidInputException : public std::exception {
+		public: virtual const char * what() const throw() {return _MAGENTA "Invalid Input" _END;} };
 
 private:
-	container<T, std::allocator<T> >		_sequence;
-	unsigned int 							_it;
-	PmergeMe();
-};
+	std::vector<int>			_vec;
+	std::list<int>				_lis;
 
-# include "PmergeMe.tpp"
+	// unsigned int				_it;
+
+	std::vector<std::string>	_unsorted;
+
+	PmergeMe();
+	PmergeMe(PmergeMe const &src);
+
+	PmergeMe & operator=(PmergeMe const &src);
+};
 
 #endif
