@@ -134,11 +134,9 @@ void PmergeMe::VecSorter(int it){
 	}
 	else {
 		// std::cout << "odd insertion compare to : " << odd[half - 1] << std::endl;
-		if (odd[half -1] < main.back()) {
-			vecBinarySearch(half, main, odd.begin(), odd.begin() + half - 1);
-			for (viterator i = odd.begin()+ half; i != odd.end(); ++i)
-				main.push_back(*i);
-		}
+		vecBinarySearch(half, main, odd.begin(), odd.begin() + half - 1);
+		for (viterator i = odd.begin()+ half; i != odd.end(); ++i)
+			main.push_back(*i);
 	}
 	this->_vec = main;
 	vecPrinter(this->_vec, "Res:", 0);
