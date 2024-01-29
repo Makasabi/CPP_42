@@ -15,8 +15,7 @@ void PmergeMe::binarySearch(int half, Container<T, Allocator> &chain, typename C
 		else
 			end = mid;
 	}
-	// std::cout << "comparing *mid : " << *mid << " to : " << *to << std::endl;
-	chain.insert(start - half + 1, from, to + 1);
+	chain.insert(start - (half - 1), from, to + 1);
 }
 
 template <template <typename, typename> class Container, typename T, typename Allocator>
@@ -62,30 +61,47 @@ Container<T, Allocator> & PmergeMe::fordJohnson(Container<T, Allocator> &sequenc
 	if (sequence.size()/it == 0)
 		return sequence;
 
-	// std::cout << "\nit = " << it << std::endl;
-	// printer(sequence, "Unsorted pairs:", it);
+	/********TESTS********/
+
+	// std::cout << "*****************************" << "\nit = " << it << std::endl;
+	// printer(sequence, "Unsorted pairs: ", it);
+
+	/*********************/
 
 	int		half = it / 2;
 
 	for (typename Container<T, Allocator>::iterator i = sequence.begin(); i < sequence.end(); i += it)
 	{
-		if (i + it > sequence.end())
+    if (std::distance(i, sequence.end()) < it)
 			break;
 		if (*(i + half - 1) > *(i + it - 1))
 			swaper<Container, T, Allocator>(i, i + half, half);
 	}
 
+	/********TESTS********/
+
 	// printer(sequence,"sorted pairs:", it);
+
+	/*********************/
 
 	fordJohnson(sequence, it*2);
 
+	/********TESTS********/
+
 	// std::cout << "\nit = " << it << std::endl;
 	// std::cout << "half = " << half << std::endl;
-	// printer(sequence,"out of reccurssion:", it);
+	// printer(sequence,"Out of reccurssion:", it);
+
+	/*********************/
 
 	Container<T, Allocator>	main , pend, odd;
 
+	/********TESTS********/
+
 	// std::cout << "iterator to begining of odd : " <<  sequence.size() - (sequence.size() % it) << std::endl;
+
+	/*********************/
+
 	for (typename Container<T, Allocator>::iterator i = sequence.end() - (sequence.size() % it); i < sequence.end(); ++i)
 		odd.push_back(*i);
 
@@ -101,9 +117,14 @@ Container<T, Allocator> & PmergeMe::fordJohnson(Container<T, Allocator> &sequenc
 		}
 		divider++;
 	}
+
+	/********TESTS********/
+
 	// printer(main, "main:", half);
 	// printer(pend, "pend:", half);
 	// printer(odd, "odd:", half);
+
+	/*********************/
 
 	Container<T, Allocator> res = main;
 
@@ -114,7 +135,7 @@ Container<T, Allocator> & PmergeMe::fordJohnson(Container<T, Allocator> &sequenc
 		js = jacobsthalNumber(n);
 		index = js;
 		while (index > prevjs && index >= 1){
-			if (pend.begin() + ((index - 1) * half) >= pend.end())
+			if ((index - 1) * half >= static_cast<int>(pend.size()))
 				index--;
 			else {
 				binarySearch(half, main, pend.begin()+((index -1) * half), pend.begin() + ((index -1) * half) + half -1);
@@ -130,14 +151,17 @@ Container<T, Allocator> & PmergeMe::fordJohnson(Container<T, Allocator> &sequenc
 			main.push_back(*i);
 	}
 	else {
-		// std::cout << "odd insertion compare to : " << odd[half - 1] << std::endl;
 		binarySearch(half, main, odd.begin(), odd.begin() + half - 1);
 		for (typename Container<T, Allocator>::iterator i = odd.begin()+ half; i != odd.end(); ++i)
 			main.push_back(*i);
 	}
 	sequence = main;
-	// printer(sequence, "Res:", 0);
-	// std::cout << "is it sorted ? " << (isSorted()?"yes":"no") << std::endl;
-	return sequence;
 
+
+	/********TESTS********/
+
+	// printer(sequence, "Result:", 0);
+
+	/*********************/
+	return sequence;
 }

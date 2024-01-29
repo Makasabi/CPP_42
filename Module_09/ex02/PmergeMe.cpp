@@ -38,42 +38,6 @@ bool PmergeMe::trueDigit(std::string input) {
 	return true;
 }
 
-	/***************************/
-	/*         VECTOR          */
-	/***************************/
-
-std::vector<unsigned int> & PmergeMe::getVec(void) {
-	return this->_vec;
-}
-
-void PmergeMe::setVec(std::vector<unsigned int> & src) {
-	this->_vec = src;
-}
-
-	/***************************/
-	/*        UNSORTED         */
-	/***************************/
-
-// std::vector<unsigned int> & PmergeMe::getUns(void) {
-// 	return this->_unsorted;
-// }
-
-// void PmergeMe::setUns(std::vector<unsigned int> & src) {
-// 	this->_unsorted = src;
-// }
-
-	/***************************/
-	/*          LIST           */
-	/***************************/
-
-std::deque<unsigned int> & PmergeMe::getDeq(void) {
-	return this->_deq;
-}
-
-void PmergeMe::setDeq(std::deque<unsigned int> & src) {
-	this->_deq = src;
-}
-
 unsigned int	PmergeMe::jacobsthalNumber(int n)
 {
 	if (n == 0)

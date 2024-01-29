@@ -2,6 +2,7 @@
 # define PMERGEME_HPP
 
 # include <deque>
+# include <list>
 # include <vector>
 # include <sstream>
 # include <string>
@@ -10,6 +11,7 @@
 # include <climits>
 # include <ctime>
 # include <sys/time.h>
+# include <iterator>
 
 # include "colors.hpp"
 
@@ -19,12 +21,14 @@ public:
 	PmergeMe(char **argv);
 	~PmergeMe();
 
-	void			computer(void);
+	void computer(void);
 
 	unsigned long long int chrono(void);
 
-	bool			trueDigit(std::string input);
-	unsigned int	jacobsthalNumber(int n);
+	bool trueDigit(std::string input);
+	unsigned int jacobsthalNumber(int n);
+
+	std::list<unsigned int> & listFordJohnson(std::list<unsigned int> &sequence, int it);
 
 	/***************************/
 	/*        TEMPLATES        */
@@ -44,20 +48,6 @@ public:
 
 	template <template <typename, typename> class Container, typename T, typename Allocator>
 	Container<T, Allocator> & fordJohnson(Container<T, Allocator> &sequence, int it);
-
-	/***************************/
-	/*         VECTOR          */
-	/***************************/
-
-	std::vector<unsigned int> & getVec(void);
-	void setVec(std::vector<unsigned int> & src);
-
-	/***************************/
-	/*          DEQUE          */
-	/***************************/
-
-	std::deque<unsigned int> & getDeq(void);
-	void setDeq(std::deque<unsigned int> & src);
 
 	/***************************/
 	/*       EXCEPTIONS        */
