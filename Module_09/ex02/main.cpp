@@ -8,9 +8,10 @@ int main (int argc, char **argv) {
 	}
 	try {
 		PmergeMe	algo(argv);
-		std::cout << "is it sorted ? " << (algo.isSorted()?"yes":"no") << std::endl;
-		algo.VecSorter(2);
-		std::cout << "is it sorted ? " << (algo.isSorted()?"yes":"no") << std::endl;
+		// std::cout << "is it sorted ? " << (algo.isSorted(algo.getVec())?"yes":"no") << std::endl;
+		// algo.setVec(algo.fordJohnson(algo.getVec(), 2));
+		algo.computer();
+		// std::cout << "is it sorted ? " << (algo.isSorted(algo.getVec())?"yes":"no") << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cout << _MAGENTA "Error: " << e.what() << _END << std::endl;

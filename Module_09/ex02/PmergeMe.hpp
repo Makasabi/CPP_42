@@ -1,14 +1,17 @@
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
-# include <list>
+# include <deque>
 # include <vector>
 # include <sstream>
 # include <string>
 # include <iostream>
 # include <algorithm>
+# include <climits>
+# include <ctime>
+# include <sys/time.h>
 
-#include "colors.hpp"
+# include "colors.hpp"
 
 class PmergeMe {
 
@@ -16,53 +19,71 @@ public:
 	PmergeMe(char **argv);
 	~PmergeMe();
 
+	void			computer(void);
+
+	unsigned long long int chrono(void);
+
 	bool			trueDigit(std::string input);
-	unsigned int	JacobsthalNumber(int n);
-	bool			isSorted(void);
+	unsigned int	jacobsthalNumber(int n);
 
 	/***************************/
-	/*       SORT VECTOR       */
+	/*        TEMPLATES        */
 	/***************************/
 
-	typedef std::vector<int>::iterator viterator;
+	template <template <typename, typename> class Container, typename T, typename Allocator>
+	bool	isSorted(Container<T, Allocator> &sequence);
 
-	void VecSorter(int it);
+	template <template <typename, typename> class Container, typename T, typename Allocator>
+	void swaper(typename Container<T, Allocator>::iterator bigger, typename Container<T, Allocator>::iterator smaller, int size);
 
-	void vecSwaper(std::vector<int>::iterator bigger, std::vector<int>::iterator smaller, int size);
-	void vecPrinter(std::vector<int> toPrint, std::string comment, int it);
-	void vecBinarySearch(int half, std::vector<int> &chain, std::vector<int>::iterator from, std::vector<int>::iterator to);
+	template <template <typename, typename> class Container, typename T, typename Allocator>
+	void printer(Container<T, Allocator>  toPrint, std::string comment, int it);
 
+	template <template <typename, typename> class Container, typename T, typename Allocator>
+	void binarySearch(int half, Container<T, Allocator> &chain, typename Container<T, Allocator>::iterator from, typename Container<T, Allocator>::iterator to);
 
-	std::vector<int> getVec(void);
-
-
-
-	/***************************/
-	/*        SORT LIST        */
-	/***************************/
-
-	// std::list<int> & LisSorter(std::list<int> & sequence);
-	// void liSwaper(std::list<int>::iterator bigger, std::list<int>::iterator smaller, int size);
+	template <template <typename, typename> class Container, typename T, typename Allocator>
+	Container<T, Allocator> & fordJohnson(Container<T, Allocator> &sequence, int it);
 
 	/***************************/
-	/*        EXCEPTION        */
+	/*         VECTOR          */
+	/***************************/
+
+	std::vector<unsigned int> & getVec(void);
+	void setVec(std::vector<unsigned int> & src);
+
+	/***************************/
+	/*          DEQUE          */
+	/***************************/
+
+	std::deque<unsigned int> & getDeq(void);
+	void setDeq(std::deque<unsigned int> & src);
+
+	/***************************/
+	/*       EXCEPTIONS        */
 	/***************************/
 
 	class InvalidInputException : public std::exception {
 		public: virtual const char * what() const throw() {return _MAGENTA "Invalid Input" _END;} };
 
+	class AlreadySortedException : public std::exception {
+		public: virtual const char * what() const throw() {return _MAGENTA "Already sorted" _END;} };
+
+	class DuplicateEntryException : public std::exception {
+		public: virtual const char * what() const throw() {return _MAGENTA "Duplicate Entry" _END;} };
+
 private:
-	std::vector<int>			_vec;
-	std::list<int>				_lis;
+	std::vector<unsigned int>	_vec;
+	std::deque<unsigned int>	_deq;
 
-	// unsigned int				_it;
-
-	std::vector<std::string>	_unsorted;
+	std::vector<unsigned int>	_unsorted;
 
 	PmergeMe();
 	PmergeMe(PmergeMe const &src);
 
 	PmergeMe & operator=(PmergeMe const &src);
 };
+
+# include "PmergeMe.tpp"
 
 #endif
